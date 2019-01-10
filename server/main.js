@@ -7,4 +7,4 @@ Meteor.startup(() => {
   // code to run on server at startup
 });
 
-// Meteor.publish('patients', () => Patients.find({}));
+Meteor.publish('patients', () => Patients.find({}));
