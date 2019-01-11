@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Layout from "../imports/ui/Layout";
 import PatientsList from "../imports/ui/PatientsList";
@@ -12,8 +12,10 @@ const AppRouter = () => (
     <Router>
         <Layout>
             <Route path="/" exact component={Index} />
-            <Route path="/patients/" component={PatientsList} />
-            <Route path="/patients/add" component={PatientForm} />
+            <Switch>
+                <Route path="/patients/add" component={PatientForm} />
+                <Route path="/patients" component={PatientsList} />
+            </Switch>
         </Layout>
   </Router>
 );

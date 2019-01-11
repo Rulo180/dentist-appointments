@@ -8,8 +8,6 @@ import Patients from '../api/patients';
 
 const PatientsList = ({ patients }) => {
     const renderPatients = (patients ) => {
-        console.log("patients:", patients);
-        
         let patientsArray = [];
         patients.map((patient) => {
             const { _id, name, tel, birthDate } = patient;
@@ -27,7 +25,7 @@ const PatientsList = ({ patients }) => {
     return (
         <div>
             <div className="row no-gutters justify-content-end">
-                <Link to="/patients/add" className="btn btn-light">Add</Link>
+                <a href="/patients/add" class="btn btn-light">Add</a>
             </div>
             <table className="table table-striped">
                 <thead>
