@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Link } from 'react-router-dom';
 
+import { URLS } from './constants';
 import Patients from '../api/patients';
 
 
@@ -25,7 +25,7 @@ const PatientsList = ({ patients }) => {
     return (
         <div>
             <div className="row no-gutters justify-content-end">
-                <a href="/patients/add" class="btn btn-light">Add</a>
+                <a href={URLS.ADD_PATIENT_URL} class="btn btn-light">Add</a>
             </div>
             <table className="table table-striped">
                 <thead>
