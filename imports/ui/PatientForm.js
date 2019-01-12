@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 
 class PatientForm extends Component {
@@ -9,7 +10,7 @@ class PatientForm extends Component {
             name: nameInput.value,
             tel: telInput.value,
             birthDate: birthInput.value,
-        });
+        }, () => this.props.history.push('/patients'));
     }
     render() { 
         return ( 
