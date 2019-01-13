@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
+import { check } from 'meteor/check';
+
 
 const Patients = new Mongo.Collection('patients');
 
@@ -16,12 +18,35 @@ Meteor.methods({
         tel,
         birthDate,
     }) {
+		check(name, String);
+		check(birthDate, String);
         Patients.insert({
             name,
             tel,
             birthDate,
         });
-    }
+	},
+	'patient.edit'({
+		id,
+		data,
+	}) {
+		Patients.update(
+			id,
+			{$set: {
+				name: data.name,
+				tel: data.tel,
+				birthDate: data.birthDate,
+			}
+		});
+	},
+	'patient.remove'({
+		_id,
+	}) {
+		check(_id, String);
+		Patients.remove({
+			_id
+		});
+	}
 });
 
 export default Patients;

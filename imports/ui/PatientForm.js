@@ -3,6 +3,12 @@ import { Redirect } from 'react-router-dom';
 
 
 class PatientForm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			toPatientList: false,
+		};
+	}
     handleSubmit = (event) => {
         event.preventDefault();
         const { nameInput, telInput, birthInput } = event.target;
@@ -10,9 +16,14 @@ class PatientForm extends Component {
             name: nameInput.value,
             tel: telInput.value,
             birthDate: birthInput.value,
-        }, () => this.props.history.push('/patients'));
+		}, () => {
+			this.setState({ toPatientList: true })
+		});
     }
     render() { 
+		if (this.state.toPatientList === true) {
+			return <Redirect to='/patients' />
+		}
         return ( 
             <section>
                 <form onSubmit={this.handleSubmit}>
