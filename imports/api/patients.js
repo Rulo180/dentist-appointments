@@ -13,6 +13,14 @@ Patients.schema = new SimpleSchema({
 });
 
 Meteor.methods({
+	'patient.find'({
+		id
+	}) {
+		check(id, String);
+		if (id) {
+			return Patients.findOne({ _id: id });
+		}
+	},
     'patients.insert'({
         name,
         tel,

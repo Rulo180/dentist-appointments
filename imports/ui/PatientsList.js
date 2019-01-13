@@ -1,15 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Redirect } from 'react-router-dom';
 
 import { URLS } from './constants';
 import Patients from '../api/patients';
 
 
 const PatientsList = ({ patients }) => {
-	const handleEdit = (id) => {
-		console.log('editar');
-	}
 	const handleDelete = (id) => {
 		Meteor.call('patient.remove', { _id: id });
 	}
@@ -21,7 +19,7 @@ const PatientsList = ({ patients }) => {
             patientsArray.push(
                 <tr key={_id}>
                     <th scope="row">{rowNumber++}</th>
-					<td><button onClick={() => handleEdit(_id)} type="button" className="btn btn-outline-info">Editar</button></td>
+					<td><a href={`patient/edit/${_id}`} className="btn btn-link">Editar</a></td>
                     <td>{name}</td>
                     <td>{tel}</td>
                     <td>{birthDate}</td>

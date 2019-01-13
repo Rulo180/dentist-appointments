@@ -1,5 +1,5 @@
 import React from 'react';
-import { URLS } from './constants';
+import { URLS } from '../constants';
 
 
 const Navbar = () => {
