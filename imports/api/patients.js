@@ -7,9 +7,26 @@ import { check } from 'meteor/check';
 const Patients = new Mongo.Collection('patients');
 
 Patients.schema = new SimpleSchema({
-    name: { type: String, required: true },
-    tel: { type: SimpleSchema.Integer },
-    birthDate: { type: Date}
+    name: { 
+		type: String,
+		label: "Name",
+		required: true
+	},
+    tel: {
+		type: SimpleSchema.Integer,
+		label: "Telephone"
+	},
+    birthDate: {
+		type: Date,
+		label: "Birth Date",
+	},
+	createdAt: {
+		type: Date,
+		label: "Created At",
+		autoValue: function() {
+			return new Date();
+		}
+	}
 });
 
 Meteor.methods({
@@ -56,5 +73,11 @@ Meteor.methods({
 		});
 	}
 });
+
+// Patients.allow({
+// 	insert: function(userId) {
+// 		return !!userId;
+// 	}
+// });
 
 export default Patients;
