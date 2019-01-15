@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { URLS } from './constants';
 import Patients from '../api/patients';
 
 
-const PatientsList = ({ patients }) => {
+const PatientsList = ({ patients, location }) => {
 	const handleDelete = (id) => {
 		Meteor.call('patient.remove', { _id: id });
 	}
@@ -19,20 +19,21 @@ const PatientsList = ({ patients }) => {
             patientsArray.push(
                 <tr key={_id}>
                     <th scope="row">{rowNumber++}</th>
-					<td><a href={`patient/edit/${_id}`} className="btn btn-link">Editar</a></td>
+					<td><Link to={`${URLS.EDIT_PATIENT_URL}/${_id}`} className="btn btn-link">Editar</Link></td>
                     <td>{name}</td>
                     <td>{tel}</td>
-                    <td>{birthDate}</td>
+                    <td>{birthDate.toLocaleDateString()}</td>
 					<td><button onClick={() => handleDelete(_id)} type="button" className="btn btn-outline-danger">Borrar</button></td>
                 </tr>
             );
         });
         return patientsArray;
     }
+    
     return (
         <div>
             <div className="row no-gutters justify-content-end">
-                <a href={URLS.ADD_PATIENT_URL} className="btn btn-light">Add</a>
+                <Link to={URLS.ADD_PATIENT_URL} className="btn btn-primary">Add</Link>
             </div>
             <table className="table table-striped">
                 <thead>

@@ -11,14 +11,16 @@ const Index = () => <h1>Welcome to Dentist Appointments!</h1>;
 
 const AppRouter = () => (
     <Router>
-        <Layout>
-            <Route path="/" exact component={Index} />
-            <Switch>
-                <Route path="/patient/edit/:id" component={EditPatient} />
-                <Route path="/patients/add" component={CreatePatient} />
-                <Route path="/patients" component={PatientsList} />
-            </Switch>
-        </Layout>
+        <Switch>
+            <Layout>
+                <Route path="/" exact component={Index} />
+                <Switch>
+                    <Route path="/patient/edit/:id" component={EditPatient} />
+                    <Route path="/patients/add" component={CreatePatient} />
+                    <Route path="/patients" component={PatientsList} />
+                </Switch>
+            </Layout>
+        </Switch>
   </Router>
 );
 

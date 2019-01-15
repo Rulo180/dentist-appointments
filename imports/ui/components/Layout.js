@@ -1,19 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import Navbar from './Navbar';
 
-class Layout extends PureComponent {
-    render() { 
-        const { children } = this.props;
-        return (
-            <div>
-                <Navbar />
-                <div className="container">
-                    {children}
-                </div>
+
+const Layout = ({ children }) => {
+    return (
+        <div>
+            <Navbar />
+            <div className="container">
+                {children}
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
  
 export default Layout;
