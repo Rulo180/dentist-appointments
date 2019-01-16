@@ -9,22 +9,22 @@ import SimpleSchema from 'simpl-schema';
 const Patients = new Mongo.Collection('patients');
 
 Patients.schema = new SimpleSchema({
-    name: { 
+	name: { 
 		type: String,
-		label: "Name",
+		label: 'Name',
 	},
-    tel: {
-		type: SimpleSchema.Integer,
-		label: "Telephone",
+	tel: {
+		type: String,
+		label: 'Telephone',
 		optional: true,
 	},
-    birthDate: {
+	birthDate: {
 		type: Date,
-		label: "Birth Date",
+		label: 'Birth Date',
 	},
 	createdAt: {
 		type: Date,
-		label: "Created At",
+		label: 'Created At',
 		autoValue: function() {
 			return new Date();
 		}
@@ -42,18 +42,18 @@ Meteor.methods({
 			return Patients.findOne({ _id: id });
 		}
 	},
-    'patients.insert'({
-        name,
-        tel,
-        birthDate,
-    }) {
+	'patients.insert'({
+		name,
+		tel,
+		birthDate,
+	}) {
 		check(name, String);
-		check(birthDate, String);
-        Patients.insert({
-            name,
-            tel,
-            birthDate,
-        });
+		check(birthDate, Date);
+		Patients.insert({
+			name,
+			tel,
+			birthDate,
+		});
 	},
 	'patient.edit'({
 		id,
@@ -67,8 +67,8 @@ Meteor.methods({
 				name: data.name,
 				tel: data.tel,
 				birthDate: data.birthDate,
-			}
-		});
+			}}
+		);
 	},
 	'patient.remove'({
 		_id,

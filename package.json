@@ -1,12 +1,16 @@
 {
   "name": "dentist-appointments",
   "private": true,
+  "eslintConfig": {
+    "extends": "@meteorjs/eslint-config-meteor"
+  },
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha --port 3100",
     "test:watch": "TEST_WATCH=1 meteor test --driver-package meteortesting:mocha --port 3100",
-    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
-    "visualize": "meteor --production --extra-packages bundle-visualizer"
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha --port 3100",
+    "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "lint": "npm run eslint ; npm run sasslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
