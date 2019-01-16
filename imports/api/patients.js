@@ -60,7 +60,7 @@ Meteor.methods({
 		data,
 	}) {
 		check(data.name, String);
-		check(data.birthDate, String);
+		check(data.birthDate, Date);
 		Patients.update(
 			id,
 			{$set: {

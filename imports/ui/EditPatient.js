@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 import { URLS } from './constants';
 
@@ -12,7 +11,6 @@ class EditPatient extends Component {
 		this.state = {
 			patient: null,
 			isLoading: true,
-			toPatientList: false,
 		};
 	}
 
@@ -30,23 +28,22 @@ class EditPatient extends Component {
 	
 	handleSubmit = (event) => {
 		event.preventDefault();
-        const { name, tel, birthDate } = event.target;
-        Meteor.call('patient.edit', {
+		const { name, tel, birthDate } = event.target;
+		Meteor.call('patient.edit', {
 			id: this.state.patient._id,
-            data: {
+			data: {
 				name: name.value,
-            	tel: tel.value,
-            	birthDate: birthDate.value,
+				tel: tel.value,
+				birthDate: new Date(birthDate.value),
 			}
 		}, () => {
-			this.setState({ toPatientList: true })
+			this.props.history.push(URLS.PATIENTS_URL);
 		});
 	}
 		
 	render() { 
 		const {
 			isLoading,
-			toPatientList,
 			patient
 		} = this.state;
 
@@ -56,9 +53,6 @@ class EditPatient extends Component {
 					Is loading...
 				</div>
 			);
-		}
-		if (toPatientList === true) {
-			return <Redirect to={ URLS.PATIENTS_URL } />
 		}
 		
 		return (

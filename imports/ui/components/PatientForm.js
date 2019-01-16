@@ -5,7 +5,7 @@ class PatientForm extends Component {
 		super(props);
 		this.state = {
 			patient: this.props.patient,
-		}
+		};
 	}
 
 	handleChange = (event) => {
