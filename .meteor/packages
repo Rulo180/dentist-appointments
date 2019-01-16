@@ -20,5 +20,8 @@ static-html
 fourseven:scss
 seba:minifiers-autoprefixer
 react-meteor-data
-
 meteortoys:allthings
+meteortesting:mocha
+xolvio:cleaner
+dburles:factory
+aldeed:collection2@3.0.0

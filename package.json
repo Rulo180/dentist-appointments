@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test": "meteor test --once --driver-package meteortesting:mocha --port 3100",
+    "test:watch": "TEST_WATCH=1 meteor test --driver-package meteortesting:mocha --port 3100",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
@@ -11,6 +12,7 @@
     "@babel/runtime": "^7.1.5",
     "bootstrap": "^4.2.1",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.4.1",
     "popper.js": "^1.14.6",
     "react": "^16.7.0",
@@ -23,7 +25,18 @@
     "mainModule": {
       "client": "client/main.js",
       "server": "server/main.js"
-    },
-    "testModule": "tests/main.js"
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^5.12.0",
+    "eslint-import-resolver-meteor": "^0.4.0",
+    "eslint-plugin-meteor": "^5.1.0",
+    "eslint-plugin-react": "^7.12.3",
+    "faker": "^4.1.0",
+    "sass-lint": "^1.12.1"
   }
 }
