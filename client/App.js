@@ -1,27 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base';
 
-import Layout from "../imports/ui/components/Layout";
-import PatientsList from "../imports/ui/PatientsList";
-import CreatePatient from "../imports/ui/CreatePatient";
-import EditPatient from "../imports/ui/EditPatient";
+import Layout from '../imports/ui/components/Layout';
+import PrivateRoute from './PrivateRoute';
+import Login from '../imports/ui/Login';
+import Page404 from '../imports/ui/Page404';
+import PatientsList from '../imports/ui/PatientsList';
+import CreatePatient from '../imports/ui/CreatePatient';
+import EditPatient from '../imports/ui/EditPatient';
 
 
 const Index = () => <h1>Welcome to Dentist Appointments!</h1>;
 
+Accounts.ui.config({
+	passwordSignupFields: 'EMAIL_ONLY',
+});
+
 const AppRouter = () => (
-    <Router>
-        <Switch>
-            <Layout>
-                <Route path="/" exact component={Index} />
-                <Switch>
-                    <Route path="/patient/edit/:id" component={EditPatient} />
-                    <Route path="/patients/add" component={CreatePatient} />
-                    <Route path="/patients" component={PatientsList} />
-                </Switch>
-            </Layout>
-        </Switch>
-  </Router>
+	<Router>
+		<Layout>
+			{/* <Route path="/" component={Layout} /> */}
+			<Switch>
+				<Route path="/login" component={Login} />
+				<PrivateRoute exact path="/" component={Index} />
+				<PrivateRoute path="/patient/edit/:id" component={EditPatient} />
+				<PrivateRoute path="/patients/add" component={CreatePatient} />
+				<PrivateRoute path="/patients" component={PatientsList} />
+				<Route component={Page404} />
+			</Switch>
+		</Layout>
+	</Router>
 );
 
 export default AppRouter;

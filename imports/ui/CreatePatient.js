@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
 
 import { URLS } from './constants';
 
@@ -21,7 +22,7 @@ class CreatePatient extends Component {
 		
 	render() { 
 		// TODO: refactor this
-		const patient = { name: '', tel: '', birthDate: '' }
+		const patient = { name: '', tel: '', birthDate: '' };
 		return (
 			<PatientForm onSubmit={this.handleSubmit} patient={patient} />
 		);

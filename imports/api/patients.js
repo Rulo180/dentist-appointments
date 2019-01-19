@@ -24,11 +24,15 @@ Patients.schema = new SimpleSchema({
 	},
 	createdAt: {
 		type: Date,
-		label: 'Created At',
+		label: 'Created at',
 		autoValue: function() {
 			return new Date();
 		}
-	}
+	},
+	createdBy: {
+		type: String,
+		label: 'Created by',
+	},
 });
 
 Patients.attachSchema(Patients.schema);
@@ -49,10 +53,15 @@ Meteor.methods({
 	}) {
 		check(name, String);
 		check(birthDate, Date);
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
 		Patients.insert({
 			name,
 			tel,
 			birthDate,
+			createdBy: this.userId,
+			createdAt: new Date(),
 		});
 	},
 	'patient.edit'({
@@ -61,6 +70,9 @@ Meteor.methods({
 	}) {
 		check(data.name, String);
 		check(data.birthDate, Date);
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
 		Patients.update(
 			id,
 			{$set: {
@@ -74,6 +86,9 @@ Meteor.methods({
 		_id,
 	}) {
 		check(_id, String);
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
 		Patients.remove({ _id });
 	}
 });
