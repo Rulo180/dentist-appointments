@@ -22,7 +22,7 @@ const PatientsList = ({ patients }) => {
 					<td><Link to={`${URLS.EDIT_PATIENT_URL}/${_id}`} className="btn btn-link">Editar</Link></td>
 					<td>{name}</td>
 					<td>{tel}</td>
-					<td>{birthDate.toLocaleDateString()}</td>
+					<td>{birthDate.toISOString().substring(0, 10)}</td>
 					<td><button onClick={() => handleDelete(_id)} type="button" className="btn btn-outline-danger">Borrar</button></td>
 				</tr>
 			);

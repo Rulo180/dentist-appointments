@@ -32,6 +32,9 @@ Patients.schema = new SimpleSchema({
 	createdBy: {
 		type: String,
 		label: 'Created by',
+		autoValue: function() {
+			return this.userId;
+		},
 	},
 });
 
@@ -104,6 +107,7 @@ Factory.define('patient', Patients, {
 	tel: () => faker.phone.phoneNumber(),
 	birthDate: () => faker.date.past(15),
 	createdAt: () => new Date(),
+	createdBy: () => this.userId,
 });
 
 export default Patients;

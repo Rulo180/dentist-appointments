@@ -4,7 +4,7 @@ class PatientForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			patient: this.props.patient,
+			patient: this.props.patient || {},
 		};
 	}
 
@@ -50,7 +50,7 @@ class PatientForm extends Component {
 						<label htmlFor="birthInput">Birth Date</label>
 						<input  type="date" 
 							className="form-control"
-							value={patient.birthDate}
+							value={patient.birthDate?patient.birthDate.toISOString().substring(0, 10):''}
 							onChange={this.handleChange}
 							name="birthDate" 
 						/>

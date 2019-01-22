@@ -21,10 +21,8 @@ class CreatePatient extends Component {
 	}
 		
 	render() { 
-		// TODO: refactor this
-		const patient = { name: '', tel: '', birthDate: '' };
 		return (
-			<PatientForm onSubmit={this.handleSubmit} patient={patient} />
+			<PatientForm onSubmit={this.handleSubmit} />
 		);
 	}
 }
