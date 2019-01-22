@@ -1,22 +1,20 @@
 import React, { PureComponent } from 'react';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
-import { Redirect, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base';
 
-import { auth } from './utils/authentication';
+import { URLS } from './constants';
 
 
-class Login extends PureComponent {
+class Signup extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			email: '',
 			password: '',
-			errorMessage: '',
-			redirectToReferrer: false,
+			confirm: '',
+			hasError: false,
 		};
 	}
-
 	_handleChange = (event) => {
 		const { id, value } = event.target;
 		this.setState({
@@ -24,48 +22,38 @@ class Login extends PureComponent {
 		});
 	} 
 
-	_handleLoginSubmit = (event) => {
+	_handleSubmit = (event) => {
 		event.preventDefault();
 
-		let { email, password } = this.state;
+		const { email, password, confirm } = this.state;
 
-		auth.authenticate({
-			email,
-			password,
-			onLoginSucceeded: () => {
-				this.setState({ redirectToReferrer: true });
-			},
-			onError: (error) => {
-				this.setState({ errorMessage: error });
-			}
-		});
+		if (password === confirm) {
+			Accounts.createUser({
+				email,
+				password,
+			});
+			this.props.history.push(URLS.HOME_URL);
+		} else {
+			this.setState({ hasError: true });
+		}
 	}
 
 	render() {
 		const { 
-			errorMessage,
 			email,
 			password,
+			confirm,
+			hasError,
 		} = this.state;
-		const { isAuthenticated } = this.props;
-		let { from } = this.props.location.state || { from: { pathname: '/' } };
-
-		if (isAuthenticated) {
-			return (<Redirect to={from} />);
-		}
-		let displayErrors = null;
-		if (errorMessage) {
-			displayErrors = (
-				<div>
-					{errorMessage}
-				</div>
-			);
-		}
-
+		let errorComponent = (
+			<div>
+				Your passwords doesn't match.
+			</div>
+		);
 		return (
 			<div className="row justify-content-center">
 				<div className="col-10 col-md-4">
-					<form onSubmit={this._handleLoginSubmit} className="form">
+					<form onSubmit={this._handleSubmit} className="form">
 						<div className="form-group">
 							<label htmlFor="email">Email address</label>
 							<input
@@ -90,20 +78,27 @@ class Login extends PureComponent {
 								placeholder="Password"
 							/>
 						</div>
+						<div className="form-group">
+							<label htmlFor="confirm">Confirm</label>
+							<input 
+								type="password"
+								value={confirm}
+								onChange={this._handleChange}
+								className="form-control"
+								id="confirm"
+								placeholder="Confirm your password"
+							/>
+						</div>
 						<div className="row justify-content-around align-items-center">
-							<button type="submit" className="btn btn-primary">Log In</button>
-							<NavLink to="/signup">Create new user</NavLink>
+							<button type="submit" className="btn btn-primary">Sign In</button>
+							<NavLink to="/login">I already have an account</NavLink>
 						</div>
 					</form>
-					{displayErrors}
+					{hasError && errorComponent}	
 				</div>
 			</div>
 		);
 	}
 }
- 
-export default withTracker(() => {
-	return {
-		isAuthenticated: !!Meteor.userId(),
-	};
-})(Login);
+
+export default Signup;

@@ -1,17 +1,20 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import Navbar from './Navbar';
 
 
-const Layout = ({ children }) => {
-    return (
-        <div>
-            <Navbar />
-            <div className="container">
-                {children}
-            </div>
-        </div>
-    );
+const Layout = ({ children, history }) => {
+	return (
+		<div>
+			<Navbar history={history}/>
+			<div className="container">
+				{children}
+			</div>
+		</div>
+	);
 };
  
-export default Layout;
+export default withRouter(
+	Layout,
+);

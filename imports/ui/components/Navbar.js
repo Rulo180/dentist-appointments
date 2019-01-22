@@ -1,13 +1,23 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import { URLS } from '../constants';
+import { auth } from '../utils/authentication';
 
-import AccountsUI from '../AccountsUIWrapper';
 
+const Navbar = ({ history }) => {
+	const {
+		HOME_URL,
+		PATIENTS_URL,
+		LOGIN_URL,
+	} = URLS;
+	const isLoggedIn = Meteor.userId();
 
-const Navbar = () => {
-	const { HOME_URL, PATIENTS_URL } = URLS;
+	const _handleLogout = () => {
+		auth.logout();
+		history.push(LOGIN_URL);
+	};
+	
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<NavLink to={HOME_URL} className="navbar-brand">Dentist Appointments</NavLink>
@@ -15,10 +25,7 @@ const Navbar = () => {
 				<span className="navbar-toggler-icon"></span>
 			</button>
 			<div className="collapse navbar-collapse" id="topNavbar">
-				<ul className="navbar-nav ml-auto">
-					<li className="nav-item d-flex align-items-center">
-						<AccountsUI />
-					</li>
+				<ul className="navbar-nav mr-auto">
 					<li className="nav-item">
 						<NavLink to={HOME_URL} className="nav-link">Home</NavLink>
 					</li>
@@ -26,9 +33,13 @@ const Navbar = () => {
 						<NavLink to={PATIENTS_URL} className="nav-link">Patients</NavLink>
 					</li>
 				</ul>
+				{ (isLoggedIn) ?
+					<button className="btn btn-link" onClick={_handleLogout}>Logout</button>
+					: <NavLink to="/login">Log In</NavLink>
+				}
 			</div>
 		</nav>
-	)
-}
+	);
+};
 
 export default Navbar;
