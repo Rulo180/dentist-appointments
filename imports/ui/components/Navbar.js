@@ -14,8 +14,7 @@ const Navbar = ({ history }) => {
 	const isLoggedIn = Meteor.userId();
 
 	const _handleLogout = () => {
-		auth.logout();
-		history.push(LOGIN_URL);
+		auth.logout(() => history.push('/login'));
 	};
 	
 	return (
