@@ -41,6 +41,7 @@
     "eslint-plugin-meteor": "^5.1.0",
     "eslint-plugin-react": "^7.12.3",
     "faker": "^4.1.0",
+    "moment": "^2.24.0",
     "sass-lint": "^1.12.1"
   }
 }

@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { URLS } from './constants';
 import Patients from '../api/patients';
@@ -22,7 +23,7 @@ const PatientsList = ({ patients }) => {
 					<td><Link to={`${URLS.EDIT_PATIENT_URL}/${_id}`} className="btn btn-link">Editar</Link></td>
 					<td>{name}</td>
 					<td>{tel}</td>
-					<td>{birthDate.toISOString().substring(0, 10)}</td>
+					<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
 					<td><button onClick={() => handleDelete(_id)} type="button" className="btn btn-outline-danger">Borrar</button></td>
 				</tr>
 			);

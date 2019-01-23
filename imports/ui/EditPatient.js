@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 import { URLS } from './constants';
 
@@ -34,7 +35,7 @@ class EditPatient extends Component {
 			data: {
 				name: name.value,
 				tel: tel.value,
-				birthDate: new Date(birthDate.value),
+				birthDate: moment(birthDate.value).toDate(),
 			}
 		}, () => {
 			this.props.history.push(URLS.PATIENTS_URL);
@@ -56,9 +57,11 @@ class EditPatient extends Component {
 		}
 		
 		return (
-			<div>
-				<h3>Editar Paciente</h3>
-				<PatientForm onSubmit={this.handleSubmit} patient={patient} />
+			<div className="row justify-content-center">
+				<div className="col-9 col-md-6">
+					<h3>Editar Paciente</h3>
+					<PatientForm onSubmit={this.handleSubmit} patient={patient} />
+				</div>
 			</div>
 		);
 	}

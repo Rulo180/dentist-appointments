@@ -28,6 +28,5 @@ export const auth = {
 
 	logout(cb) {
 		Meteor.logout(cb);
-		console.log('entro');
 	},
 };
