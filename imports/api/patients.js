@@ -32,9 +32,9 @@ Patients.schema = new SimpleSchema({
 	createdBy: {
 		type: String,
 		label: 'Created by',
-		autoValue: function() {
-			return this.userId;
-		},
+		// autoValue: function() {
+		// 	return this.userId;
+		// },
 	},
 });
 
@@ -48,6 +48,9 @@ Meteor.methods({
 		if (id) {
 			return Patients.findOne({ _id: id });
 		}
+	},
+	'patients.list'() {
+		return Patients.find({});
 	},
 	'patients.insert'({
 		name,
@@ -107,7 +110,7 @@ Factory.define('patient', Patients, {
 	tel: () => faker.phone.phoneNumber(),
 	birthDate: () => faker.date.past(15),
 	createdAt: () => new Date(),
-	createdBy: () => this.userId,
+	createdBy: () => new Mongo.ObjectID(),
 });
 
 export default Patients;

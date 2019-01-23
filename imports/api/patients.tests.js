@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import { Factory } from 'meteor/dburles:factory';
 import faker from 'faker';
 import { assert } from 'chai';
@@ -37,12 +38,14 @@ if (Meteor.isServer) {
 		it('can insert a patient', function() {
 			let name = faker.name.findName(),
 				tel = faker.phone.phoneNumber(),
-				birthDate = faker.date.past(15);
+				birthDate = faker.date.past(15),
+				userId = new Mongo.ObjectID();
 
 			Meteor.call('patients.insert', {
 				name,
 				tel,
 				birthDate,
+				createdBy: userId,
 			});
 			assert.equal(Patients.find({}).count(), 2);
 		});
