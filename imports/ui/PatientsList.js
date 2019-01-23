@@ -20,7 +20,7 @@ const PatientsList = ({ patients }) => {
 			patientsArray.push(
 				<tr key={_id}>
 					<th scope="row">{rowNumber++}</th>
-					<td><Link to={`${URLS.EDIT_PATIENT_URL}/${_id}`} className="btn btn-link">Editar</Link></td>
+					<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-link">Editar</Link></td>
 					<td>{name}</td>
 					<td>{tel}</td>
 					<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
@@ -34,7 +34,7 @@ const PatientsList = ({ patients }) => {
 	return (
 		<div>
 			<div className="row no-gutters justify-content-end">
-				<Link to={URLS.ADD_PATIENT_URL} className="btn btn-primary">Add</Link>
+				<Link to={URLS.ADD_PATIENT} className="btn btn-primary">Add</Link>
 			</div>
 			<table className="table table-striped">
 				<thead>

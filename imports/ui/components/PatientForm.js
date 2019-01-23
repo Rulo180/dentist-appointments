@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
+import { NavLink } from 'react-router-dom';
+
+import { URLS } from '../constants';
 
 class PatientForm extends PureComponent {
 	constructor(props) {
@@ -63,7 +66,14 @@ class PatientForm extends PureComponent {
 						name="birthDate" 
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">Save</button>
+				<div className="row align-items-center">
+					<div className="col text-right">
+						<button type="submit" className="btn btn-primary">Save</button>
+					</div>
+					<div className="col">
+						<NavLink to={URLS.PATIENTS}>Cancel</NavLink>
+					</div>
+				</div>
 			</form>
 		);
 	}

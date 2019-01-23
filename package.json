@@ -23,6 +23,7 @@
     "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
+    "react-select": "^2.3.0",
     "simpl-schema": "^1.5.3"
   },
   "meteor": {
@@ -42,6 +43,7 @@
     "eslint-plugin-react": "^7.12.3",
     "faker": "^4.1.0",
     "moment": "^2.24.0",
-    "sass-lint": "^1.12.1"
+    "sass-lint": "^1.12.1",
+    "sinon": "^7.2.3"
   }
 }

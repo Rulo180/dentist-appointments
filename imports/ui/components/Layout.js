@@ -8,7 +8,7 @@ const Layout = ({ children, history }) => {
 	return (
 		<div>
 			<Navbar history={history}/>
-			<div className="container">
+			<div className="container pt-3 pb-3">
 				{children}
 			</div>
 		</div>

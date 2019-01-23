@@ -38,7 +38,7 @@ class EditPatient extends Component {
 				birthDate: moment(birthDate.value).toDate(),
 			}
 		}, () => {
-			this.props.history.push(URLS.PATIENTS_URL);
+			this.props.history.push(URLS.PATIENTS);
 		});
 	}
 		

@@ -32,7 +32,7 @@ class Signup extends PureComponent {
 				email,
 				password,
 			});
-			this.props.history.push(URLS.HOME_URL);
+			this.props.history.push(URLS.HOME);
 		} else {
 			this.setState({ hasError: true });
 		}

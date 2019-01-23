@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 
@@ -7,7 +7,7 @@ import { URLS } from './constants';
 import PatientForm from './components/PatientForm';
 
 
-class CreatePatient extends Component {
+class CreatePatient extends PureComponent {
 	
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -17,7 +17,7 @@ class CreatePatient extends Component {
 			tel: tel.value,
 			birthDate: moment(birthDate.value).toDate(),
 		}, () => {
-			this.props.history.push(URLS.PATIENTS_URL);
+			this.props.history.push(URLS.PATIENTS);
 		});
 	}
 		

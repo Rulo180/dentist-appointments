@@ -10,6 +10,7 @@ import Page404 from '../imports/ui/Page404';
 import PatientsList from '../imports/ui/PatientsList';
 import CreatePatient from '../imports/ui/CreatePatient';
 import EditPatient from '../imports/ui/EditPatient';
+import AppointmentCreate from '../imports/ui/AppointmentCreate';
 
 
 const Index = () => <h1>Welcome to Dentist Appointments!</h1>;
@@ -28,6 +29,7 @@ const AppRouter = () => (
 				<PrivateRoute path="/patient/edit/:id" component={EditPatient} />
 				<PrivateRoute path="/patients/add" component={CreatePatient} />
 				<PrivateRoute path="/patients" component={PatientsList} />
+				<PrivateRoute path="/appointments/add" component={AppointmentCreate}/>
 				<Route component={Page404} />
 			</Switch>
 		</Layout>
