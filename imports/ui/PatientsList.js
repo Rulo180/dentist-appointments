@@ -32,8 +32,9 @@ const PatientsList = ({ patients }) => {
 	}
 	
 	return (
-		<div>
-			<div className="row no-gutters justify-content-end">
+		<main>
+			<div className="row no-gutters justify-content-between mb-3">
+				<h3>Patients</h3>
 				<Link to={URLS.ADD_PATIENT} className="btn btn-primary">Add</Link>
 			</div>
 			<table className="table table-striped">
@@ -51,15 +52,15 @@ const PatientsList = ({ patients }) => {
 					{renderPatients(patients)}
 				</tbody>
 			</table>
-		</div>
+		</main>
 	);
 };
 
 export default withTracker(() => {
 	const patientsHandler = Meteor.subscribe('patients');
-	const loadingPatients = !patientsHandler.ready();
+	const isLoading = !patientsHandler.ready();
 
 	return {
-		patients: !loadingPatients ? Patients.find({}).fetch() : [], 
+		patients: !isLoading ? Patients.find({}).fetch() : [], 
 	};
 })(PatientsList);
