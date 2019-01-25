@@ -33,6 +33,18 @@ export class AppointmentForm extends PureComponent {
 		});
 	}
 
+	_handleSubmit = (event) => {
+		event.preventDefault();
+		const { date, time, observations, patientId } = this.state.appointment;
+		let data = {
+			date,
+			time,
+			observations,
+			patientId,
+		};
+		this.props.onSubmit(data);
+	}
+
 	_mapPatientsToOptions = () => {
 		let options = [];
 		this.props.patients.map((patient) => {
@@ -42,12 +54,11 @@ export class AppointmentForm extends PureComponent {
 	}
 
 	render() {
-		const { onSubmit } = this.props;
 		const { appointment } = this.state;
 		const options = this._mapPatientsToOptions();
 
 		return (
-			<form onSubmit={onSubmit}>
+			<form onSubmit={this._handleSubmit}>
 				<div className="form-group">
 					<label htmlFor="patientSelect">Patient</label>
 					<Select

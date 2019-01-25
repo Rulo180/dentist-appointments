@@ -107,7 +107,7 @@ Factory.define('patient', Patients, {
 	tel: () => faker.phone.phoneNumber(),
 	birthDate: () => faker.date.past(15),
 	createdAt: () => new Date(),
-	createdBy: () => this.userId,
+	createdBy: () => (new Mongo.Collection.ObjectID)._str, 
 });
 
 export default Patients;

@@ -8,8 +8,9 @@ import { auth } from '../utils/authentication';
 const Navbar = ({ history }) => {
 	const {
 		HOME,
-		PATIENTS,
 		LOGIN,
+		PATIENTS,
+		APPOINTMENTS,
 	} = URLS;
 	const isLoggedIn = Meteor.userId();
 
@@ -29,7 +30,7 @@ const Navbar = ({ history }) => {
 						<NavLink to={HOME} className="nav-link">Home</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink to='/appointments/add' className="nav-link">Appointments/add</NavLink>
+						<NavLink to={APPOINTMENTS} className="nav-link">Appointments</NavLink>
 					</li>
 					<li className="nav-item">
 						<NavLink to={PATIENTS} className="nav-link">Patients</NavLink>

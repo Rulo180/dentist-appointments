@@ -3,17 +3,27 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import moment from 'moment';
 
+import { URLS } from './constants';
+import { convertTimeToMilliseconds } from './utils/utils';
+
 import Patients from '../api/patients';
 import { AppointmentForm } from './components/AppointmentForm';
 
 
 class AppointmentCreate extends PureComponent {
 
-	_handleSubmit = (event) => {
-		event.preventDefault();
-		// Get values from target
-		// Meteor call	
-		// 	redirect on cb
+	_handleSubmit = (data) => {
+		const { time, date, observations, patientId } = data;
+		let timestamp = new Date(date).getTime();	// convert date into ms
+		let timemilliseconds = convertTimeToMilliseconds(time); // convert time into ms
+		let datetime = timestamp + timemilliseconds;	// add those ms
+		Meteor.call('appointment.insert', {
+			date: new Date(datetime),	// create a new date with the result
+			observations: observations,
+			patientId: patientId,
+		}, () => {
+			this.props.history.push(URLS.APPOINTMENTS);
+		});
 	};
 
 	render() {
