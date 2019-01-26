@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import Select from 'react-select';
 import { NavLink } from 'react-router-dom';
 
+import { URLS } from '../constants';
+
 
 export class AppointmentForm extends PureComponent {
 	constructor(props) {
@@ -60,7 +62,10 @@ export class AppointmentForm extends PureComponent {
 		return (
 			<form onSubmit={this._handleSubmit}>
 				<div className="form-group">
-					<label htmlFor="patientSelect">Patient</label>
+					<div className="row justify-content-between no-gutters">
+						<label htmlFor="patientSelect">Patient</label>
+						<NavLink to={URLS.ADD_PATIENT}>Create patient</NavLink>
+					</div>
 					<Select
 						name="patientSelect"
 						options={options}

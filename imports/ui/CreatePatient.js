@@ -24,8 +24,12 @@ class CreatePatient extends PureComponent {
 	render() { 
 		return (
 			<div className="row justify-content-center">
-				<div className="col-9 col-md-6">
-					<PatientForm onSubmit={this.handleSubmit} />
+				<div className="col-10 col-md-8 col-lg-6">
+					<div className="card">
+						<div className="card-body">
+							<PatientForm onSubmit={this.handleSubmit} />
+						</div>
+					</div>
 				</div>
 			</div>
 		);

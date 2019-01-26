@@ -52,49 +52,53 @@ class Signup extends PureComponent {
 		);
 		return (
 			<div className="row justify-content-center">
-				<div className="col-10 col-md-4">
-					<form onSubmit={this._handleSubmit} className="form">
-						<div className="form-group">
-							<label htmlFor="email">Email address</label>
-							<input
-								type="email"
-								value={email}
-								onChange={this._handleChange}
-								className="form-control"
-								id="email"
-								aria-describedby="emailHelp"
-								placeholder="Enter email"
-							/>
-							<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+				<div className="col-9 col-md-6">
+					<div className="card">
+						<div className="card-body">
+							<form onSubmit={this._handleSubmit} className="form">
+								<div className="form-group">
+									<label htmlFor="email">Email address</label>
+									<input
+										type="email"
+										value={email}
+										onChange={this._handleChange}
+										className="form-control"
+										id="email"
+										aria-describedby="emailHelp"
+										placeholder="Enter email"
+									/>
+									<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+								</div>
+								<div className="form-group">
+									<label htmlFor="password">Password</label>
+									<input 
+										type="password"
+										value={password}
+										onChange={this._handleChange}
+										className="form-control"
+										id="password"
+										placeholder="Password"
+									/>
+								</div>
+								<div className="form-group">
+									<label htmlFor="confirm">Confirm</label>
+									<input 
+										type="password"
+										value={confirm}
+										onChange={this._handleChange}
+										className="form-control"
+										id="confirm"
+										placeholder="Confirm your password"
+									/>
+								</div>
+								<div className="row justify-content-around align-items-center">
+									<button type="submit" className="btn btn-primary">Sign In</button>
+									<NavLink to="/login">I already have an account</NavLink>
+								</div>
+							</form>
+							{hasError && errorComponent}	
 						</div>
-						<div className="form-group">
-							<label htmlFor="password">Password</label>
-							<input 
-								type="password"
-								value={password}
-								onChange={this._handleChange}
-								className="form-control"
-								id="password"
-								placeholder="Password"
-							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="confirm">Confirm</label>
-							<input 
-								type="password"
-								value={confirm}
-								onChange={this._handleChange}
-								className="form-control"
-								id="confirm"
-								placeholder="Confirm your password"
-							/>
-						</div>
-						<div className="row justify-content-around align-items-center">
-							<button type="submit" className="btn btn-primary">Sign In</button>
-							<NavLink to="/login">I already have an account</NavLink>
-						</div>
-					</form>
-					{hasError && errorComponent}	
+					</div>
 				</div>
 			</div>
 		);

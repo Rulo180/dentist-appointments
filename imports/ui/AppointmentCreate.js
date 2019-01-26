@@ -31,9 +31,13 @@ class AppointmentCreate extends PureComponent {
 
 		return (
 			<div className="row justify-content-center">
-				<div className="col-9 col-md-6">
-					<h2>Create a new appointment</h2>
-					<AppointmentForm  patients={patients} onSubmit={this._handleSubmit} />
+				<div className="col-10 col-md-8 col-lg-6">
+					<div className="card">
+						<div className="card-body">
+							<h2>Create a new appointment</h2>
+							<AppointmentForm  patients={patients} onSubmit={this._handleSubmit} />
+						</div>
+					</div>
 				</div>
 			</div>
 		);

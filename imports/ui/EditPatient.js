@@ -50,17 +50,23 @@ class EditPatient extends Component {
 
 		if (isLoading) {
 			return (
-				<div>
-					Is loading...
+				<div className="d-flex justify-content-center mt-5">
+					<div className="spinner-border text-primary" role="status">
+						<span className="sr-only">Loading...</span>
+					</div>
 				</div>
 			);
 		}
 		
 		return (
 			<div className="row justify-content-center">
-				<div className="col-9 col-md-6">
-					<h3>Editar Paciente</h3>
-					<PatientForm onSubmit={this.handleSubmit} patient={patient} />
+				<div className="col-10 col-md-8 col-lg-6">
+					<div className="card">
+						<div className="card-body">
+							<h3>Editar Paciente</h3>
+							<PatientForm onSubmit={this.handleSubmit} patient={patient} />
+						</div>
+					</div>
 				</div>
 			</div>
 		);

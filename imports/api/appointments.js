@@ -20,6 +20,11 @@ Appointments.schema = new SimpleSchema({
 		type: String,
 		label: 'Patient'
 	},
+	isCanceled: {
+		type: Boolean,
+		label: 'Is canceled',
+		defaultValue: false,
+	},
 	createdAt: {
 		type: Date,
 		label: 'Created at',
@@ -42,6 +47,14 @@ Meteor.methods({
 	'appointments.list'() {
 		return Appointments.find({}).fetch;
 	},
+	'appointment.find'({
+		_id,
+	}) {
+		check(_id, String);
+		if (_id) {
+			return Appointments.findOne({ _id });
+		}
+	},
 	'appointment.insert'({
 		date,
 		observations,
@@ -58,6 +71,28 @@ Meteor.methods({
 			observations,
 			patientId,
 		});
+	},
+	'appointment.cancel'({
+		_id,
+	}) {
+		check(_id, String);
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		Appointments.update({
+			_id
+		}, {
+			$set: { isCanceled: true }
+		});
+	},
+	'appointment.remove'({
+		_id,
+	}) {
+		check(_id, String);
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		Appointments.remove({ _id });
 	},
 });
 

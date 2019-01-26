@@ -46,25 +46,29 @@ class PatientForm extends PureComponent {
 						name="name" 
 						placeholder="Enter name" />
 				</div>
-				<div className="form-group">
-					<label htmlFor="telInput">Tel</label>
-					<input  type="tel" 
-						className="form-control"
-						value={patient.tel}
-						onChange={this.handleChange}
-						name="tel" 
-						aria-describedby="telHelp" 
-						placeholder="Enter telephone number" />
-					<small id="telHelp" className="form-text text-muted">E.g. 2616111222.</small>
+				<div className="form-row">
+					<div className="form-group col-md-6">
+						<label htmlFor="telInput">Tel</label>
+						<input  type="tel" 
+							className="form-control"
+							value={patient.tel}
+							onChange={this.handleChange}
+							name="tel" 
+							aria-describedby="telHelp" 
+							placeholder="Enter phone number" />
+						<small id="telHelp" className="form-text text-muted">E.g. 2616111222.</small>
+					</div>
 				</div>
-				<div className="form-group">
-					<label htmlFor="birthInput">Birth Date</label>
-					<input  type="date" 
-						className="form-control"
-						value={patient.birthDate}
-						onChange={this.handleChange}
-						name="birthDate" 
-					/>
+				<div className="form-row">
+					<div className="form-group col-md-6">
+						<label htmlFor="birthInput">Birth Date</label>
+						<input  type="date" 
+							className="form-control"
+							value={patient.birthDate}
+							onChange={this.handleChange}
+							name="birthDate" 
+						/>
+					</div>
 				</div>
 				<div className="row align-items-center">
 					<div className="col text-right">

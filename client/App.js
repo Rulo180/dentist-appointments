@@ -14,7 +14,7 @@ import AppointmentsList from '../imports/ui/AppointmentsList';
 import AppointmentCreate from '../imports/ui/AppointmentCreate';
 
 
-const Index = () => <h1>Welcome to Dentist Appointments!</h1>;
+const Index = () => <h2>Welcome to Dentist Appointments!</h2>;
 
 Accounts.ui.config({
 	passwordSignupFields: 'EMAIL_ONLY',
