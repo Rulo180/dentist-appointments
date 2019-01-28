@@ -21,11 +21,11 @@ const PatientsList = ({ patients }) => {
 			patientsArray.push(
 				<tr key={_id}>
 					<th scope="row">{rowNumber++}</th>
-					<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-link">Editar</Link></td>
+					<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 					<td>{name}</td>
 					<td>{tel}</td>
 					<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
-					<td><button onClick={() => _handleDelete(_id)} type="button" className="btn btn-outline-danger">Borrar</button></td>
+					<td><button onClick={() => _handleDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 				</tr>
 			);
 		});

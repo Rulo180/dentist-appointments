@@ -79,10 +79,11 @@ Meteor.methods({
 		if (!this.userId) {
 			throw new Meteor.Error('not-authorized');
 		}
+		let appointment = Appointments.findOne({ _id });
 		Appointments.update({
 			_id
 		}, {
-			$set: { isCanceled: true }
+			$set: { isCanceled: !appointment.isCanceled }
 		});
 	},
 	'appointment.remove'({

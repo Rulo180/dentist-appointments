@@ -28,14 +28,19 @@ const AppointmentsList = ({ appointments, patients }) => {
 			if (patient) {
 				name = patient.name;
 			}
+			let cancelBtn = (isCanceled) ? 
+				<button onClick={() => _handleCancel(_id)} type="button" className="btn active text-white btn-outline-warning"><i className="far fa-calendar-times"></i></button>
+				:
+				<button onClick={() => _handleCancel(_id)} type="button" className="btn btn-outline-warning"><i className="fas fa-calendar-times"></i></button>;
+				
 			appointmentsArray.push(
 				<tr key={_id} className={isCanceled?'table-dark':''}>
 					<th scope="row">{rowNumber++}</th>
 					<td>{date.toLocaleString('es', { hour: 'numeric', minute: 'numeric', hour12: false })} hs</td>
 					<td>{name}</td>
 					<td>{observations}</td>
-					<td>{!isCanceled && <button onClick={() => _handleCancel(_id)} type="button" className="btn btn-outline-warning">Cancel</button>}</td>
-					<td><button onClick={() => _handleDelete(_id)} type="button" className="btn btn-outline-danger">Borrar</button></td>
+					<td className="text-center">{cancelBtn}</td>
+					<td className="text-center"><button onClick={() => _handleDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 				</tr>
 			);
 		});
@@ -63,12 +68,13 @@ const AppointmentsList = ({ appointments, patients }) => {
 								<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary">Add</Link>
 							</div>
 							<table className="table">
-								<thead>
+								<thead className="text-center">
 									<tr>
 										<th scope="col">#</th>
 										<th scope="col">Time</th>
 										<th scope="col">Patient</th>
 										<th scope="col">Observations</th>
+										<th scope="col">Is Canceled?</th>
 										<th scope="col"></th>
 									</tr>
 								</thead>

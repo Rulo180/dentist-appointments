@@ -17,7 +17,7 @@ class CreatePatient extends PureComponent {
 			tel: tel.value,
 			birthDate: moment(birthDate.value).toDate(),
 		}, () => {
-			this.props.history.push(URLS.PATIENTS);
+			this.props.history.goBack();
 		});
 	}
 		
