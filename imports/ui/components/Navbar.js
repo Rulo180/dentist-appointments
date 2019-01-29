@@ -27,18 +27,18 @@ const Navbar = ({ history }) => {
 			<div className="collapse navbar-collapse" id="topNavbar">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item">
-						<NavLink to={HOME} className="nav-link">Home</NavLink>
+						<NavLink to={HOME} className="nav-link"><i className="fas fa-home"></i> Home</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink to={APPOINTMENTS} className="nav-link">Appointments</NavLink>
+						<NavLink to={APPOINTMENTS} className="nav-link"><i className="far fa-calendar-alt"></i> Appointments</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink to={PATIENTS} className="nav-link">Patients</NavLink>
+						<NavLink to={PATIENTS} className="nav-link"><i className="far fa-address-book"></i> Patients</NavLink>
 					</li>
 				</ul>
 				{ (isLoggedIn) ?
-					<button className="btn btn-link" onClick={_handleLogout}>Logout</button>
-					: <NavLink to="/login">Log In</NavLink>
+					<button className="btn btn-link" onClick={_handleLogout}><i className="fas fa-sign-out-alt"></i> Logout</button>
+					: <NavLink to={LOGIN}><i className="fas fa-sign-in-alt"></i> Log In</NavLink>
 				}
 			</div>
 		</nav>

@@ -71,17 +71,19 @@ Meteor.methods({
 		id,
 		data,
 	}) {
-		check(data.name, String);
-		check(data.birthDate, Date);
+		const { name, birthDate, tel } = data;
+		check(id, String);
+		check(name, String);
+		check(birthDate, Date);
 		if (! this.userId) {
 			throw new Meteor.Error('not-authorized');
 		}
 		Patients.update(
 			id,
 			{$set: {
-				name: data.name,
-				tel: data.tel,
-				birthDate: data.birthDate,
+				name: name,
+				tel: tel,
+				birthDate: birthDate,
 			}}
 		);
 	},

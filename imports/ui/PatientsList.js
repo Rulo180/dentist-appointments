@@ -50,13 +50,13 @@ const PatientsList = ({ patients }) => {
 						<div className="card-body">
 							<div className="row no-gutters justify-content-between mb-3">
 								<h3>Patients</h3>
-								<Link to={URLS.ADD_PATIENT} className="btn btn-primary">Add</Link>
+								<Link to={URLS.ADD_PATIENT} className="btn btn-primary"><i className="fas fa-user-plus"></i> Add</Link>
 							</div>
 							<table className="table table-striped">
 								<thead>
 									<tr>
 										<th scope="col">#</th>
-										<th scope="col"></th>
+										<th scope="col">Edit</th>
 										<th scope="col">Name</th>
 										<th scope="col">Tel</th>
 										<th scope="col">Birth Date</th>

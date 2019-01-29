@@ -22,7 +22,7 @@ class EditPatient extends Component {
 				this.setState({
 					isLoading: false,
 					patient: res,
-				})
+				});
 			}
 		);
 	}

@@ -20,6 +20,11 @@ Appointments.schema = new SimpleSchema({
 		type: String,
 		label: 'Patient'
 	},
+	isConfirmed: {
+		type: Boolean,
+		label: 'Is confirmed',
+		defaultValue: false,
+	},
 	isCanceled: {
 		type: Boolean,
 		label: 'Is canceled',
@@ -80,6 +85,9 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		}
 		let appointment = Appointments.findOne({ _id });
+		if (appointment.isConfirmed) {
+			throw new Meteor.Error('Can not cancel a confirmed event');
+		}
 		Appointments.update({
 			_id
 		}, {

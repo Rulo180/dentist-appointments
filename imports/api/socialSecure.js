@@ -40,6 +40,12 @@ Meteor.methods({
 		code,
 		services
 	}) {
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		check(name, String);
+		check(code, String);
+		check(services, Array);
 		return SocialSecure.insert({
 			name,
 			code,

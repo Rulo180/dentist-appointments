@@ -13,6 +13,10 @@ const AppointmentsList = ({ appointments, patients }) => {
 		Meteor.call('appointment.remove', { _id: id});
 	};
 
+	const _handleConfirm = (id) => {
+		Meteor.call('appointment.confirm', { _id: id });
+	};
+
 	const _handleCancel = (id) => {
 		Meteor.call('appointment.cancel', { _id: id});
 	};
@@ -28,6 +32,11 @@ const AppointmentsList = ({ appointments, patients }) => {
 			if (patient) {
 				name = patient.name;
 			}
+			let confirmBtn = (isConfirmed) ?
+				<button onClick={() => _handleConfirm(_id)} className="btn btn-outline-success active"><i className="far fa-calendar-check"></i></button>
+				:
+				<button onClick={() => _handleConfirm(_id)} className="btn btn-outline-success"><i className="fas fa-calendar-check"></i></button>;
+
 			let cancelBtn = (isCanceled) ? 
 				<button onClick={() => _handleCancel(_id)} type="button" className="btn active text-white btn-outline-warning"><i className="far fa-calendar-times"></i></button>
 				:
@@ -35,6 +44,7 @@ const AppointmentsList = ({ appointments, patients }) => {
 				
 			appointmentsArray.push(
 				<tr key={_id} className={isCanceled?'table-dark':''}>
+					<td className="text-center" scope="row">{confirmBtn}</td>
 					<th scope="row">{rowNumber++}</th>
 					<td>{date.toLocaleString('es', { hour: 'numeric', minute: 'numeric', hour12: false })} hs</td>
 					<td>{name}</td>
@@ -65,16 +75,17 @@ const AppointmentsList = ({ appointments, patients }) => {
 						<div className="card-body">
 							<div className="row no-gutters justify-content-between mb-3">
 								<h3>Appointments</h3>
-								<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary">Add</Link>
+								<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary"><i className="far fa-calendar-plus"></i> Add</Link>
 							</div>
 							<table className="table">
-								<thead className="text-center">
+								<thead>
 									<tr>
+										<th scope="col">Confirm</th>
 										<th scope="col">#</th>
 										<th scope="col">Time</th>
 										<th scope="col">Patient</th>
 										<th scope="col">Observations</th>
-										<th scope="col">Is Canceled?</th>
+										<th className="text-center" scope="col">Is Canceled?</th>
 										<th scope="col"></th>
 									</tr>
 								</thead>
