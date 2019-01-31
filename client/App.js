@@ -11,7 +11,8 @@ import PatientsList from '../imports/ui/PatientsList';
 import CreatePatient from '../imports/ui/CreatePatient';
 import EditPatient from '../imports/ui/EditPatient';
 import AppointmentsList from '../imports/ui/AppointmentsList';
-import AppointmentCreate from '../imports/ui/AppointmentCreate';
+import AppointmentCreateContainer from '../imports/ui/container/AppointmentCreateContainer';
+import AppointmentEditContainer from '../imports/ui/container/AppointmentEditContainer';
 
 
 const Index = () => <h2>Welcome to Dentist Appointments!</h2>;
@@ -30,8 +31,9 @@ const AppRouter = () => (
 				<PrivateRoute path="/patient/edit/:id" component={EditPatient} />
 				<PrivateRoute path="/patients/add" component={CreatePatient} />
 				<PrivateRoute path="/patients" component={PatientsList} />
+				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
+				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
 				<PrivateRoute path="/appointments" component={AppointmentsList}/>
-				<PrivateRoute path="/appointment/add" component={AppointmentCreate}/>
 				<Route component={Page404} />
 			</Switch>
 		</Layout>

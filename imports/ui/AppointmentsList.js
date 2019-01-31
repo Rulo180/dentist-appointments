@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { URLS } from './constants';
 import Appointments from '../api/appointments';
@@ -26,7 +27,7 @@ const AppointmentsList = ({ appointments, patients }) => {
 			rowNumber = 1;
 
 		appointments.map( (appointment) => {
-			const { _id, date, patientId, observations, isCanceled } = appointment;
+			const { _id, date, patientId, observations, isCanceled, isConfirmed } = appointment;
 			let name = '';
 			let patient = patients.find((patient) => patient._id === patientId);
 			if (patient) {
@@ -46,7 +47,8 @@ const AppointmentsList = ({ appointments, patients }) => {
 				<tr key={_id} className={isCanceled?'table-dark':''}>
 					<td className="text-center" scope="row">{confirmBtn}</td>
 					<th scope="row">{rowNumber++}</th>
-					<td>{date.toLocaleString('es', { hour: 'numeric', minute: 'numeric', hour12: false })} hs</td>
+					<td scope="row"><Link to={`${URLS.EDIT_APPOINTMENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
+					<td>{moment(date).utc().format('HH:mm')} hs</td>
 					<td>{name}</td>
 					<td>{observations}</td>
 					<td className="text-center">{cancelBtn}</td>
@@ -82,6 +84,7 @@ const AppointmentsList = ({ appointments, patients }) => {
 									<tr>
 										<th scope="col">Confirm</th>
 										<th scope="col">#</th>
+										<th scope="col">Edit</th>
 										<th scope="col">Time</th>
 										<th scope="col">Patient</th>
 										<th scope="col">Observations</th>

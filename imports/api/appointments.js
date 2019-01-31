@@ -77,6 +77,44 @@ Meteor.methods({
 			patientId,
 		});
 	},
+	'appointment.edit'({
+		id,
+		data,
+	}) {
+		const { date, observations, patientId } = data;
+		check(id, String);
+		check(date, Date);
+		check(observations, String);
+		check(patientId, String);
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		return Appointments.update(
+			id,
+			{$set: {
+				date: date,
+				observations: observations,
+				patientId: patientId,
+			}}
+		);
+	},
+	'appointment.confirm'({
+		_id,
+	}) {
+		check(_id, String);
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		let appointment = Appointments.findOne({ _id });
+		if (appointment.isCanceled) {
+			throw new Meteor.Error('Can not confirm a canceled event');
+		}
+		Appointments.update({
+			_id
+		}, {
+			$set: { isConfirmed: !appointment.isConfirmed }
+		});
+	},
 	'appointment.cancel'({
 		_id,
 	}) {

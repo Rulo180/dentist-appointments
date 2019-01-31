@@ -6,4 +6,5 @@ export const URLS = {
 	EDIT_PATIENT: '/patient/edit',
 	APPOINTMENTS: '/appointments',
 	CREATE_APPOINTMENT: '/appointment/add',
+	EDIT_APPOINTMENT: '/appointment/edit',
 };
