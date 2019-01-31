@@ -35,7 +35,7 @@ class AppointmentEditContainer extends PureComponent {
 		};
 	}
 
-	componentDidMount = () => {
+	componentDidMount() {
 		Meteor.call('appointment.find',
 			{ _id: this.props.match.params.id },
 			(err, res) => {
@@ -70,7 +70,6 @@ class AppointmentEditContainer extends PureComponent {
 
 	_handleChange = (event) => {
 		const { name, value } = event.target;
-		
 		let newAppointment = {
 			...this.state.formData,
 			[name]: {

@@ -7,8 +7,10 @@ import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
 
 import App from './App';
-import common_en from '../translations/en/common.json';
 import common_es from '../translations/es/common.json';
+import common_en from '../translations/en/common.json';
+import patients_es from '../translations/es/patients.json';
+import patients_en from '../translations/en/patients.json';
 
 
 i18next.init({
@@ -17,10 +19,12 @@ i18next.init({
 	debug: true,
 	resources: {
 		en: {
-			common: common_en
+			common: common_en,
+			patients: patients_en,
 		},
 		es: {
-			common: common_es
+			common: common_es,
+			patients: patients_es,
 		},
 	},
 });

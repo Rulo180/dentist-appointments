@@ -1,0 +1,31 @@
+{
+	"table": {
+		"title": "Patients",
+		"add": "Add",
+		"cols": {
+			"edit": "Edit",
+			"name": "Name",
+			"tel": "Phone number",
+			"birthDate": "Birth Date"
+		}
+	},
+	"form": {
+		"fields": {
+			"name": {
+				"label": "Name",
+				"placeholder": "Enter name"
+			},
+			"tel": {
+				"label": "Phone number",
+				"placeholder": "Enter phone number"
+			},
+			"birthDate": {
+				"label": "Birth Date"
+			}
+		},
+		"actions": {
+			"submit": "Save",
+			"cancel": "Cancel"
+		}
+	}
+}

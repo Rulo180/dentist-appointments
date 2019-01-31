@@ -7,9 +7,9 @@ import PrivateRoute from './PrivateRoute';
 import Login from '../imports/ui/Login';
 import Signup from '../imports/ui/Signup';
 import Page404 from '../imports/ui/Page404';
-import PatientsList from '../imports/ui/PatientsList';
-import CreatePatient from '../imports/ui/CreatePatient';
-import EditPatient from '../imports/ui/EditPatient';
+import PatientsListContainer from '../imports/ui/container/PatientsListContainer';
+import CreatePatientContainer from '../imports/ui/container/PatientCreateContainer';
+import PatientEditContainer from '../imports/ui/container/PatientEditContainer';
 import AppointmentsListContainer from '../imports/ui/container/AppointmentsListContainer';
 import AppointmentCreateContainer from '../imports/ui/container/AppointmentCreateContainer';
 import AppointmentEditContainer from '../imports/ui/container/AppointmentEditContainer';
@@ -28,9 +28,9 @@ const AppRouter = () => (
 				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
 				<PrivateRoute exact path="/" component={Index} />
-				<PrivateRoute path="/patient/edit/:id" component={EditPatient} />
-				<PrivateRoute path="/patients/add" component={CreatePatient} />
-				<PrivateRoute path="/patients" component={PatientsList} />
+				<PrivateRoute path="/patient/edit/:id" component={PatientEditContainer} />
+				<PrivateRoute path="/patients/add" component={CreatePatientContainer} />
+				<PrivateRoute path="/patients" component={PatientsListContainer} />
 				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
 				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
 				<PrivateRoute path="/appointments" component={AppointmentsListContainer}/>
