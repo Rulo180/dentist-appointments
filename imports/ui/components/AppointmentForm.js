@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { NavLink } from 'react-router-dom';
+import { translate, Trans } from 'react-i18next';
 
 import { URLS } from '../constants';
 
@@ -25,8 +26,14 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 						<form onSubmit={onSubmit}>
 							<div className="form-group">
 								<div className="row justify-content-between no-gutters">
-									<label htmlFor="patientSelect">Patient</label>
-									<NavLink to={URLS.ADD_PATIENT}>Create patient</NavLink>
+									<label htmlFor="patientSelect">
+										<Trans i18nKey={'appointments.form.labels.patient'}>Patient</Trans>
+									</label>
+									<NavLink to={URLS.ADD_PATIENT}>
+										<Trans i18nKey={'appointments.form.title'}>
+											Create patient
+										</Trans>
+									</NavLink>
 								</div>
 								<Select
 									name="patientSelect"
@@ -36,7 +43,11 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 							</div>
 							<div className="form-row">
 								<div className="form-group col-md-4">
-									<label htmlFor="timeInput">Time</label>
+									<label htmlFor="timeInput">
+										<Trans i18nKey={'appointments.form.labels.time'}>
+											Time
+										</Trans>
+									</label>
 									<input
 										type="time"
 										className="form-control"
@@ -46,7 +57,11 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 									/>
 								</div>
 								<div className="form-group col-md-6">
-									<label htmlFor="dateInput">Date</label>
+									<label htmlFor="dateInput">
+										<Trans i18nKey={'appointments.form.labels.date'}>
+											Date
+										</Trans>
+									</label>
 									<input
 										type="date"
 										className="form-control" 
@@ -57,7 +72,11 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 								</div>
 							</div>
 							<div className="form-group">
-								<label htmlFor="observations">Observations</label>
+								<label htmlFor="observations">
+									<Trans i18nKey={'appointments.form.labels.observations'}>
+										Observations
+									</Trans>
+								</label>
 								<textarea
 									className="form-control"
 									name="observations"
@@ -69,10 +88,18 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 							</div>
 							<div className="row align-items-center">
 								<div className="col text-right">
-									<button type="submit" className="btn btn-primary">Submit</button>
+									<button type="submit" className="btn btn-primary">
+										<Trans i18nKey={'form.actions.submit'}>
+											Submit
+										</Trans>
+									</button>
 								</div>
 								<div className="col">
-									<NavLink to={'/appointments'}>Cancel</NavLink>
+									<NavLink to={'/appointments'}>
+										<Trans i18nKey={'form.actions.cancel'}>
+											Cancel
+										</Trans>
+									</NavLink>
 								</div>
 							</div>
 						</form>
@@ -96,4 +123,4 @@ AppointmentForm.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 };
 
-export default AppointmentForm;
+export default translate('common')(AppointmentForm);

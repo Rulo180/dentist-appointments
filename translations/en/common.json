@@ -1,0 +1,36 @@
+{
+	"appointments": {
+		"table": {
+			"title": "Appointments",
+			"confirm": "Confirm",
+			"cancel": "Cancel",
+			"edit": "Edit",
+			"time": "Time",
+			"patient": "Patient",
+			"observations": "Observations"
+		},
+		"add": "Add",
+		"form": {
+			"title": "New patient",
+			"labels": {
+				"patient": "Patient",
+				"time": "Time",
+				"date": "Date",
+				"observations": "Observations"
+			}
+		}
+	},
+	"form": {
+		"actions": {
+			"submit": "Submit",
+			"cancel": "Cancel"
+		}
+	},
+	"navbar": {
+		"home": "Home",
+		"appointments": "Appointments",
+		"patients": "Patients",
+		"login": "Login",
+		"logout": "Logout"
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"appointments": {
+		"table": {
+			"title": "Turnos",
+			"confirm": "Confirmar",
+			"cancel": "Cancelar",
+			"edit": "Editar",
+			"time": "Hora",
+			"patient": "Paciente",
+			"observations": "Observaciones"
+		},
+		"add": "Agregar",
+		"form": {
+			"title": "Nuevo paciente",
+			"labels": {
+				"patient": "Paciente",
+				"time": "Hora",
+				"date": "Fecha",
+				"observations": "Observaciones"
+			}
+		}
+	},
+	"form": {
+		"actions": {
+			"submit": "Guardar",
+			"cancel": "Cancelar"
+		}
+	},
+	"navbar": {
+		"home": "Inicio",
+		"appointments": "Turnos",
+		"patients": "Pacientes",
+		"login": "Iniciar sesión",
+		"logout": "Cerrar sesión"
+	}
+}

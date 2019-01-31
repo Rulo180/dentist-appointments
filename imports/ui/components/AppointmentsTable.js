@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { translate, Trans } from 'react-i18next';
 
 import { URLS } from '../constants';
 
@@ -43,26 +44,59 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 		});
 		return appointmentsArray;
 	};
-
+	
 	return (
 		<div className="row justify-content-center">
 			<div className="col-lg-10">
 				<div className="card">
 					<div className="card-body">
 						<div className="row no-gutters justify-content-between mb-3">
-							<h3>Appointments</h3>
-							<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary"><i className="far fa-calendar-plus"></i> Add</Link>
+							<h3>
+								<Trans i18nKey={'appointments.table.title'}>
+									Appointments
+								</Trans>
+							</h3>
+							<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary">
+								<i className="far fa-calendar-plus"></i>&nbsp;
+								<Trans i18nKey={'appointments.add'}>
+									Add
+								</Trans>
+							</Link>
 						</div>
 						<table className="table">
 							<thead>
 								<tr>
-									<th scope="col">Confirm</th>
+									<th scope="col">
+										<Trans i18nKey={'appointments.table.confirm'}>
+											Confirm
+										</Trans>
+									</th>
 									<th scope="col">#</th>
-									<th scope="col">Edit</th>
-									<th scope="col">Time</th>
-									<th scope="col">Patient</th>
-									<th scope="col">Observations</th>
-									<th className="text-center" scope="col">Is Canceled?</th>
+									<th scope="col">
+										<Trans i18nKey={'appointments.table.edit'}>
+											Edit
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey={'appointments.table.time'}>
+											Time
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey={'appointments.table.patient'}>
+											Patient
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey={'appointments.table.observations'}>
+											Observations
+										</Trans>
+									</th>
+									<th className="text-center" scope="col">
+										<Trans i18nKey={'appointments.table.cancel'}>
+											Is Canceled?
+										</Trans>
+									</th>
 									<th scope="col"></th>
 								</tr>
 							</thead>
@@ -85,4 +119,4 @@ AppointmentsTable.propTypes = {
 	onDelete: PropTypes.func.isRequired,
 };
 
-export default AppointmentsTable;
+export default translate('common')(AppointmentsTable);
