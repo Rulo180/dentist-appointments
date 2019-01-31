@@ -10,7 +10,7 @@ import Page404 from '../imports/ui/Page404';
 import PatientsList from '../imports/ui/PatientsList';
 import CreatePatient from '../imports/ui/CreatePatient';
 import EditPatient from '../imports/ui/EditPatient';
-import AppointmentsList from '../imports/ui/AppointmentsList';
+import AppointmentsListContainer from '../imports/ui/container/AppointmentsListContainer';
 import AppointmentCreateContainer from '../imports/ui/container/AppointmentCreateContainer';
 import AppointmentEditContainer from '../imports/ui/container/AppointmentEditContainer';
 
@@ -33,7 +33,7 @@ const AppRouter = () => (
 				<PrivateRoute path="/patients" component={PatientsList} />
 				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
 				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
-				<PrivateRoute path="/appointments" component={AppointmentsList}/>
+				<PrivateRoute path="/appointments" component={AppointmentsListContainer}/>
 				<Route component={Page404} />
 			</Switch>
 		</Layout>
