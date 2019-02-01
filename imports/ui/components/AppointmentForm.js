@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
 
 import { URLS } from '../constants';
@@ -95,11 +95,11 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 									</button>
 								</div>
 								<div className="col">
-									<NavLink to={'/appointments'}>
+									<Link to={URLS.APPOINTMENTS}>
 										<Trans i18nKey={'form.actions.cancel'}>
 											Cancel
 										</Trans>
-									</NavLink>
+									</Link>
 								</div>
 							</div>
 						</form>

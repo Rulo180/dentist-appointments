@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import moment from 'moment';
 
 import { URLS } from '../constants';
 import { convertTimeToMilliseconds } from '../utils/utils';

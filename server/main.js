@@ -11,4 +11,4 @@ Meteor.startup(() => {
 
 Meteor.publish('patients', () => Patients.find({}));
 Meteor.publish('appointments', () => Appointments.find({}));
-Meteor.publish('socialSecure', () => SocialSecure.find({}));
+Meteor.publish('socialSecures', () => SocialSecure.find({}));

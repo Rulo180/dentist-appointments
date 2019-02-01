@@ -1,0 +1,18 @@
+{
+	"form": {
+		"fields": {
+			"name": {
+				"label": "Nombre",
+				"placeholder": "Ingresa el nombre"
+			},
+			"code": {
+				"label": "Codigo",
+				"placeholder": "Ingresa el código de la obra social"
+			}
+		},
+		"actions": {
+			"submit": "Guardar",
+			"cancel": "Cancelar"
+		}
+	}
+}

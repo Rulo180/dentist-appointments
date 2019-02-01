@@ -11,20 +11,24 @@ import common_es from '../translations/es/common.json';
 import common_en from '../translations/en/common.json';
 import patients_es from '../translations/es/patients.json';
 import patients_en from '../translations/en/patients.json';
+import socials_es from '../translations/es/socials.json';
+import socials_en from '../translations/en/socials.json';
 
 
 i18next.init({
 	interpolation: { escapeValue: false },  // React already does escaping
 	lng: 'es',
-	debug: true,
+	// debug: true,
 	resources: {
 		en: {
 			common: common_en,
 			patients: patients_en,
+			socials: socials_en,
 		},
 		es: {
 			common: common_es,
 			patients: patients_es,
+			socials: socials_es,
 		},
 	},
 });

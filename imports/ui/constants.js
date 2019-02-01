@@ -7,4 +7,7 @@ export const URLS = {
 	APPOINTMENTS: '/appointments',
 	CREATE_APPOINTMENT: '/appointment/add',
 	EDIT_APPOINTMENT: '/appointment/edit',
+	SOCIALS: '/socials',
+	CREATE_SOCIALS: '/socials/add',
+	EDIT_SOCIALS: '/socials/edit',
 };

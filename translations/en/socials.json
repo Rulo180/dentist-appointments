@@ -1,0 +1,18 @@
+{
+	"form": {
+		"fields": {
+			"name": {
+				"label": "Name",
+				"placeholder": "Enter the name"
+			},
+			"code": {
+				"label": "Code",
+				"placeholder": "Enter the code"
+			}
+		},
+		"actions": {
+			"submit": "Submit",
+			"cancel": "Cancel"
+		}
+	}
+}

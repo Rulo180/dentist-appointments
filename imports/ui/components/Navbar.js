@@ -12,6 +12,7 @@ const Navbar = ({ history }) => {
 		LOGIN,
 		PATIENTS,
 		APPOINTMENTS,
+		SOCIALS,
 	} = URLS;
 	const isLoggedIn = Meteor.userId();
 
@@ -48,6 +49,14 @@ const Navbar = ({ history }) => {
 							<i className="far fa-address-book"></i>&nbsp;
 							<Trans i18nKey={'navbar.patients'}>
 								Patients
+							</Trans>
+						</NavLink>
+					</li>
+					<li className="nav-item">
+						<NavLink to={SOCIALS} className="nav-link">
+							<i className="fas fa-briefcase-medical"></i>&nbsp;
+							<Trans i18nKey={'navbar.socials'}>
+								Social Secures
 							</Trans>
 						</NavLink>
 					</li>
