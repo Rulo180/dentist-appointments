@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import SimpleSchema from 'simpl-schema';
 
-const SocialSecure = new Mongo.Collection('socialSecures');
+const SocialSecures = new Mongo.Collection('socialSecures');
 
 let Service = new SimpleSchema({
 	code: {
@@ -16,7 +16,7 @@ let Service = new SimpleSchema({
 	}
 });
 
-SocialSecure.schema = new SimpleSchema({
+SocialSecures.schema = new SimpleSchema({
 	name: {
 		type: String,
 		label: 'Name',
@@ -32,7 +32,7 @@ SocialSecure.schema = new SimpleSchema({
 	'services.$': Service,
 });
 
-SocialSecure.attachSchema(SocialSecure.schema);
+SocialSecures.attachSchema(SocialSecures.schema);
 
 Meteor.methods({
 	'socialSecure.insert'({
@@ -46,7 +46,7 @@ Meteor.methods({
 		check(name, String);
 		check(code, String);
 		check(services, Array);
-		return SocialSecure.insert({
+		return SocialSecures.insert({
 			name,
 			code,
 			services,
@@ -54,4 +54,4 @@ Meteor.methods({
 	},
 });
 
-export default SocialSecure;
+export default SocialSecures;

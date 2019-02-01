@@ -47,9 +47,10 @@ class SocialSecureCreateContainer extends PureComponent {
 			code: code.value,
 			services,
 		}, (error) => {
-			if (!error) {
-				this.props.history.push(URLS.SOCIALS);
+			if (error) {
+				console.error(error);
 			}
+			this.props.history.push(URLS.SOCIALS);
 		});
 	}
 

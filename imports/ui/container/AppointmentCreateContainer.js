@@ -74,7 +74,10 @@ class AppointmentCreateContainer extends PureComponent {
 			date: new Date(datetime),	// create a new date with the result
 			observations: observations.value,
 			patientId: patientId.value,
-		}, () => {
+		}, (error) => {
+			if (error) {
+				console.error(error);
+			}
 			this.props.history.push(URLS.APPOINTMENTS);
 		});
 	};

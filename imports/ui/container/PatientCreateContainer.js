@@ -48,7 +48,10 @@ class PatientCreateContainer extends PureComponent {
 			name: name.value,
 			tel: tel.value,
 			birthDate: moment(birthDate.value).toDate(),
-		}, () => {
+		}, (error) => {
+			if (error) {
+				console.error(error);
+			}
 			this.props.history.goBack();
 		});
 	}

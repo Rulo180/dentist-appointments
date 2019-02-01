@@ -62,12 +62,11 @@ const SocialSecureForm = ({ formData, onChange, onSubmit, t }) => {
 };
 
 SocialSecureForm.propTypes = {
-	// formData: PropTypes.shape({
-	// 	patientId: PropTypes.object,
-	// 	time: PropTypes.object,
-	// 	date: PropTypes.object,
-	// 	observations: PropTypes.object,
-	// }),
+	formData: PropTypes.shape({
+		name: PropTypes.object,
+		code: PropTypes.object,
+		services: PropTypes.array,
+	}),
 	onChange: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 };
