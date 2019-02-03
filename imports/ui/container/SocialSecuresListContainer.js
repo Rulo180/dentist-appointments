@@ -31,6 +31,6 @@ export default withTracker(() => {
 	const loadingSocials = !socialsHandler.ready();
 
 	return {
-		socialSecures: !loadingSocials ? SocialSecures.find({}).fetch() : [],
+		socialSecures: !loadingSocials ? SocialSecures.find({}, { sort: { name: 1 } }).fetch() : [],
 	};
 })(SocialSecuresListContainer);

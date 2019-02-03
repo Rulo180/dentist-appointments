@@ -32,6 +32,6 @@ export default withTracker(() => {
 	const isLoading = !patientsHandler.ready();
 
 	return {
-		patients: !isLoading ? Patients.find({}).fetch() : [], 
+		patients: !isLoading ? Patients.find({}, { sort: { name: 1 } }).fetch() : [], 
 	};
 })(PatientsListContainer);

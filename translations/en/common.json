@@ -1,37 +1,37 @@
 {
 	"appointments": {
-		"table": {
-			"title": "Appointments",
-			"confirm": "Confirm",
-			"cancel": "Cancel",
-			"edit": "Edit",
-			"time": "Time",
-			"patient": "Patient",
-			"observations": "Observations"
-		},
 		"add": "Add",
 		"form": {
-			"title": "New patient",
 			"labels": {
-				"patient": "Patient",
-				"time": "Time",
 				"date": "Date",
-				"observations": "Observations"
-			}
+				"observations": "Observations",
+				"patient": "Patient",
+				"time": "Time"
+			},
+			"title": "New patient"
+		},
+		"table": {
+			"cancel": "Cancel",
+			"confirm": "Confirm",
+			"edit": "Edit",
+			"observations": "Observations",
+			"patient": "Patient",
+			"time": "Time",
+			"title": "Appointments"
 		}
 	},
 	"form": {
 		"actions": {
-			"submit": "Save",
-			"cancel": "Cancel"
+			"cancel": "Cancel",
+			"submit": "Save"
 		}
 	},
 	"navbar": {
-		"home": "Home",
 		"appointments": "Appointments",
-		"patients": "Patients",
-		"socials": "Social Secures",
+		"home": "Home",
 		"login": "Login",
-		"logout": "Logout"
+		"logout": "Logout",
+		"patients": "Patients",
+		"socials": "Social Secures"
 	}
 }

@@ -29,11 +29,11 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 									<label htmlFor="patientSelect">
 										<Trans i18nKey={'appointments.form.labels.patient'}>Patient</Trans>
 									</label>
-									<NavLink to={URLS.ADD_PATIENT}>
+									<Link to={URLS.ADD_PATIENT}>
 										<Trans i18nKey={'appointments.form.title'}>
 											Create patient
 										</Trans>
-									</NavLink>
+									</Link>
 								</div>
 								<Select
 									name="patientSelect"

@@ -1,37 +1,37 @@
 {
 	"appointments": {
-		"table": {
-			"title": "Turnos",
-			"confirm": "Confirmar",
-			"cancel": "Cancelar",
-			"edit": "Editar",
-			"time": "Hora",
-			"patient": "Paciente",
-			"observations": "Observaciones"
-		},
 		"add": "Agregar",
 		"form": {
-			"title": "Nuevo paciente",
 			"labels": {
-				"patient": "Paciente",
-				"time": "Hora",
 				"date": "Fecha",
-				"observations": "Observaciones"
-			}
+				"observations": "Observaciones",
+				"patient": "Paciente",
+				"time": "Hora"
+			},
+			"title": "Nuevo paciente"
+		},
+		"table": {
+			"cancel": "Cancelar",
+			"confirm": "Confirmar",
+			"edit": "Editar",
+			"observations": "Observaciones",
+			"patient": "Paciente",
+			"time": "Hora",
+			"title": "Turnos"
 		}
 	},
 	"form": {
 		"actions": {
-			"submit": "Guardar",
-			"cancel": "Cancelar"
+			"cancel": "Cancelar",
+			"submit": "Guardar"
 		}
 	},
 	"navbar": {
-		"home": "Inicio",
 		"appointments": "Turnos",
-		"patients": "Pacientes",
-		"socials": "Obras Sociales",
+		"home": "Inicio",
 		"login": "Iniciar sesión",
-		"logout": "Cerrar sesión"
+		"logout": "Cerrar sesión",
+		"patients": "Pacientes",
+		"socials": "Obras Sociales"
 	}
 }

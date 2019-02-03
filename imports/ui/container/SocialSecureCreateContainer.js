@@ -18,20 +18,53 @@ class SocialSecureCreateContainer extends PureComponent {
 					value: '',
 					valid: true,
 				},
+				services: [
+					{name: '', code: ''},
+				],
 			},
 		};
 	}
 
-	_handleChange = (event) => {
-		const { name, value } = event.target;
+	_handleAdd = () => {
+		this.setState((prevState) => ({
+			formData: {...prevState.formData, services: [...prevState.formData.services, {name: '', code: ''}]},
+		}));
+	};
 
-		let newFormData = {
+	_handleRemove = (index) => {
+		this.setState({
 			...this.state.formData,
-			[name]: {
-				value,
-				valid: true,
+			services: [
+				...this.state.formData.services.splice(index, 1),
+			]
+		});
+	};
+
+	_handleChange = (event) => {
+		const { name, id, value } = event.target;
+		let newFormData = {};
+		
+		if (name.slice(0, 7) === 'service') {
+			let newServices = [...this.state.formData.services];
+			const socialInput = name.slice(7,11);
+			if ( socialInput === 'Name') {
+				newServices[id] = { ...newServices[id], name: value };
+			} else if (socialInput === 'Code') {
+				newServices[id] = { ...newServices[id], code: value };
 			}
-		};
+			newFormData = {
+				...this.state.formData,
+				services:  newServices,
+			};
+		} else {
+			newFormData = {
+				...this.state.formData,
+				[name]: {
+					value,
+					valid: true,
+				}
+			};
+		}
 		this.setState({
 			formData: newFormData,
 		});
@@ -39,8 +72,7 @@ class SocialSecureCreateContainer extends PureComponent {
 
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		const { name, code } = this.state.formData;
-		let services = [{name: 'conducto', code: '098'}];
+		const { name, code, services} = this.state.formData;
 
 		Meteor.call('socialSecure.insert', {
 			name: name.value,
@@ -61,6 +93,8 @@ class SocialSecureCreateContainer extends PureComponent {
 			<SocialSecureForm
 				formData={formData}
 				onChange={this._handleChange}
+				onAdd={this._handleAdd}
+				onRemove={this._handleRemove}
 				onSubmit={this._handleSubmit}
 			/>
 		);

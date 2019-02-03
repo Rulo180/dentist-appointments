@@ -32,12 +32,12 @@ const AppRouter = () => (
 				<PrivateRoute exact path="/" component={Index} />
 				<PrivateRoute path="/patient/edit/:id" component={PatientEditContainer} />
 				<PrivateRoute path="/patients/add" component={CreatePatientContainer} />
-				<PrivateRoute path="/patients" component={PatientsListContainer} />
+				<PrivateRoute exact path="/patients" component={PatientsListContainer} />
 				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
 				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
-				<PrivateRoute path="/appointments" component={AppointmentsListContainer}/>
+				<PrivateRoute exact path="/appointments" component={AppointmentsListContainer}/>
 				<PrivateRoute path="/socials/add" component={SocialSecureCreateContainer} />
-				<PrivateRoute path="/socials/" component={SocialSecuresListContainer} />
+				<PrivateRoute exact path="/socials" component={SocialSecuresListContainer} />
 				<Route component={Page404} />
 			</Switch>
 		</Layout>
