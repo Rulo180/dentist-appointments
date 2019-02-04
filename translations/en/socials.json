@@ -1,18 +1,29 @@
 {
 	"form": {
+		"actions": {
+			"cancel": "Cancel",
+			"submit": "Submit"
+		},
 		"fields": {
-			"name": {
-				"label": "Name",
-				"placeholder": "Enter the name"
-			},
 			"code": {
 				"label": "Code",
 				"placeholder": "Enter the code"
+			},
+			"name": {
+				"label": "Name",
+				"placeholder": "Enter the name"
 			}
-		},
+		}
+	},
+	"table": {
 		"actions": {
-			"submit": "Submit",
-			"cancel": "Cancel"
+			"add": "Add"
+		},
+		"cols": {
+			"code": "Code",
+			"delete": "Delete",
+			"edit": "Edit",
+			"name": "Name"
 		}
 	}
 }

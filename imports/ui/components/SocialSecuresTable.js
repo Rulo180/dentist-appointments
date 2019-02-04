@@ -57,6 +57,11 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 											Code
 										</Trans>
 									</th>
+									<th className="text-center">
+										<Trans i18nKey={'table.cols.delete'}>
+											Delete
+										</Trans>
+									</th>
 								</tr>
 							</thead>
 							<tbody>

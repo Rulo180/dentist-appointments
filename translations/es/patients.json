@@ -1,16 +1,13 @@
 {
-	"table": {
-		"title": "Pacientes",
-		"add": "Agregar",
-		"cols": {
-			"edit": "Editar",
-			"name": "Nombre y Apellido",
-			"tel": "Teléfono",
-			"birthDate": "Fecha de nacimiento"
-		}
-	},
 	"form": {
+		"actions": {
+			"cancel": "Cancelar",
+			"submit": "Guardar"
+		},
 		"fields": {
+			"birthDate": {
+				"label": "Fecha de nacimiento"
+			},
 			"name": {
 				"label": "Nombre",
 				"placeholder": "Ingresa el nombre"
@@ -18,14 +15,17 @@
 			"tel": {
 				"label": "Teléfono",
 				"placeholder": "Ingresa el número de teléfono"
-			},
-			"birthDate": {
-				"label": "Fecha de nacimiento"
 			}
-		},
-		"actions": {
-			"submit": "Guardar",
-			"cancel": "Cancelar"
 		}
+	},
+	"table": {
+		"add": "Agregar",
+		"cols": {
+			"birthDate": "Fecha de nacimiento",
+			"edit": "Editar",
+			"name": "Nombre y Apellido",
+			"tel": "Teléfono"
+		},
+		"title": "Pacientes"
 	}
 }

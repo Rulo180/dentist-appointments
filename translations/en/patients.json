@@ -1,16 +1,13 @@
 {
-	"table": {
-		"title": "Patients",
-		"add": "Add",
-		"cols": {
-			"edit": "Edit",
-			"name": "Name",
-			"tel": "Phone number",
-			"birthDate": "Birth Date"
-		}
-	},
 	"form": {
+		"actions": {
+			"cancel": "Cancel",
+			"submit": "Save"
+		},
 		"fields": {
+			"birthDate": {
+				"label": "Birth Date"
+			},
 			"name": {
 				"label": "Name",
 				"placeholder": "Enter name"
@@ -18,14 +15,17 @@
 			"tel": {
 				"label": "Phone number",
 				"placeholder": "Enter phone number"
-			},
-			"birthDate": {
-				"label": "Birth Date"
 			}
-		},
-		"actions": {
-			"submit": "Save",
-			"cancel": "Cancel"
 		}
+	},
+	"table": {
+		"add": "Add",
+		"cols": {
+			"birthDate": "Birth Date",
+			"edit": "Edit",
+			"name": "Name",
+			"tel": "Phone number"
+		},
+		"title": "Patients"
 	}
 }

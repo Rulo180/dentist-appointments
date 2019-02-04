@@ -1,18 +1,29 @@
 {
 	"form": {
+		"actions": {
+			"cancel": "Cancelar",
+			"submit": "Guardar"
+		},
 		"fields": {
-			"name": {
-				"label": "Nombre",
-				"placeholder": "Ingresa el nombre"
-			},
 			"code": {
 				"label": "Codigo",
 				"placeholder": "Ingresa el código de la obra social"
+			},
+			"name": {
+				"label": "Nombre",
+				"placeholder": "Ingresa el nombre"
 			}
-		},
+		}
+	},
+	"table": {
 		"actions": {
-			"submit": "Guardar",
-			"cancel": "Cancelar"
+			"add": "Agregar"
+		},
+		"cols": {
+			"code": "Código",
+			"delete": "Borrar",
+			"edit": "Editar",
+			"name": "Nombre"
 		}
 	}
 }
