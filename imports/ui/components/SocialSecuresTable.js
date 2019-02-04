@@ -6,7 +6,7 @@ import { translate, Trans } from 'react-i18next';
 import { URLS } from '../constants';
 
 
-const SocialSecuresTable = ({ socialSecures }) => {
+const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 	_renderSocialSecures = () => {
 		let socialsArray = [],
 			rowNumber = 1;
@@ -18,6 +18,7 @@ const SocialSecuresTable = ({ socialSecures }) => {
 					<td scope="row">{rowNumber++}</td>
 					<td scope="row">{name}</td>
 					<td scope="row">{code}</td>
+					<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 				</tr>
 			);
 		});
@@ -70,7 +71,8 @@ const SocialSecuresTable = ({ socialSecures }) => {
 };
 
 SocialSecuresTable.propTypes = {
-	socialSecures: PropTypes.array,
+	socialSecures: PropTypes.array.isRequired,
+	onDelete: PropTypes.func.isRequired
 };
 
 export default translate('socials')(SocialSecuresTable);

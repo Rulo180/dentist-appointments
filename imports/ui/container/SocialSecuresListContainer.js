@@ -7,6 +7,10 @@ import SocialSecures from '../../api/socialSecures';
 import SocialSecuresTable from '../components/SocialSecuresTable';
 
 export class SocialSecuresListContainer extends PureComponent {
+	_handleDelete = (id) => {
+		Meteor.call('socialSecure.remove', { _id: id});
+	};
+
 	render() {
 		const { socialSecures } = this.props;
 
@@ -21,7 +25,7 @@ export class SocialSecuresListContainer extends PureComponent {
 		}
 
 		return (
-			<SocialSecuresTable socialSecures={socialSecures} />
+			<SocialSecuresTable socialSecures={socialSecures} onDelete={this._handleDelete} />
 		);
 	}
 }

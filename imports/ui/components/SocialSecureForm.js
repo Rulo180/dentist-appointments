@@ -16,7 +16,7 @@ const SocialSecureForm = ({ formData, onChange, onSubmit, onAdd, onRemove, t }) 
 				<div className="form-group" key={index}>
 					<div className="form-row">
 						<div className="col align-self-end text-center">
-							<div onClick={() => onRemove(index)} className="btn btn-danger">-</div>
+							<div onClick={() => onRemove(index)} className="btn btn-danger btn-sm">-</div>
 						</div>
 						<div className="col-5">
 							<label htmlFor={nameId}>
@@ -86,7 +86,7 @@ const SocialSecureForm = ({ formData, onChange, onSubmit, onAdd, onRemove, t }) 
 							{serviceInputs}
 							<div className="form-row">
 								<div className="col text-center">
-									<div onClick={onAdd} className="btn btn-info">+</div>
+									<div onClick={onAdd} className="btn btn-info btn-sm">+</div>
 								</div>
 								<div className="col-10"></div>
 							</div>

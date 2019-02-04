@@ -35,6 +35,17 @@ SocialSecures.schema = new SimpleSchema({
 SocialSecures.attachSchema(SocialSecures.schema);
 
 Meteor.methods({
+	'socialSecures.list'() {
+		return SocialSecures.find({}).fetch;
+	},
+	'socialSecure.find'({
+		_id,
+	}) {
+		check(_id, String);
+		if (_id) {
+			return SocialSecures.findOne({ _id });
+		}
+	},
 	'socialSecure.insert'({
 		name,
 		code,
@@ -51,6 +62,15 @@ Meteor.methods({
 			code,
 			services,
 		});
+	},
+	'socialSecure.remove'({
+		_id,
+	}) {
+		check(_id, String);
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		SocialSecures.remove({ _id });
 	},
 });
 
