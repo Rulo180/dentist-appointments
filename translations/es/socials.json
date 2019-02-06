@@ -12,6 +12,20 @@
 			"name": {
 				"label": "Nombre",
 				"placeholder": "Ingresa el nombre"
+			},
+			"services": {
+				"code": {
+					"label": "Código",
+					"placeholder": "092"
+				},
+				"name": {
+					"label": "Prestación",
+					"placeholder": "Ingresa el nombre de la prestación"
+				},
+				"price": {
+					"label": "Precio",
+					"placeholder": "$100.00"
+				}
 			}
 		}
 	},

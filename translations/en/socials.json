@@ -12,6 +12,20 @@
 			"name": {
 				"label": "Name",
 				"placeholder": "Enter the name"
+			},
+			"services": {
+				"code": {
+					"label": "Code",
+					"placeholder": "092"
+				},
+				"name": {
+					"label": "Service name",
+					"placeholder": "Enter the name of the service"
+				},
+				"price": {
+					"label": "Price",
+					"placeholder": "$100.00"
+				}
 			}
 		}
 	},

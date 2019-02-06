@@ -13,6 +13,8 @@ import patients_es from '../translations/es/patients.json';
 import patients_en from '../translations/en/patients.json';
 import socials_es from '../translations/es/socials.json';
 import socials_en from '../translations/en/socials.json';
+import social_es from '../translations/es/social.json';
+import social_en from '../translations/en/social.json';
 
 
 i18next.init({
@@ -24,11 +26,13 @@ i18next.init({
 			common: common_en,
 			patients: patients_en,
 			socials: socials_en,
+			social: social_en,
 		},
 		es: {
 			common: common_es,
 			patients: patients_es,
 			socials: socials_es,
+			social: social_es,
 		},
 	},
 });

@@ -1,0 +1,13 @@
+{
+	"table": {
+		"actions": {
+			"add": "Agregar",
+			"edit": "Editar"
+		},
+		"cols": {
+			"code": "Código",
+			"name": "Prestación",
+			"price": "Precio"
+		}
+	}
+}

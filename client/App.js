@@ -15,6 +15,7 @@ import AppointmentCreateContainer from '../imports/ui/container/AppointmentCreat
 import AppointmentEditContainer from '../imports/ui/container/AppointmentEditContainer';
 import SocialSecuresListContainer from '../imports/ui/container/SocialSecuresListContainer';
 import SocialSecureCreateContainer from '../imports/ui/container/SocialSecureCreateContainer';
+import SocialSecureViewContainer from '../imports/ui/container/SocialSecureViewContainer';
 
 
 const Index = () => <h2>Welcome to Dentist Appointments!</h2>;
@@ -37,6 +38,7 @@ const AppRouter = () => (
 				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
 				<PrivateRoute exact path="/appointments" component={AppointmentsListContainer}/>
 				<PrivateRoute path="/socials/add" component={SocialSecureCreateContainer} />
+				<PrivateRoute path="/socials/:id" component={SocialSecureViewContainer} />
 				<PrivateRoute exact path="/socials" component={SocialSecuresListContainer} />
 				<Route component={Page404} />
 			</Switch>

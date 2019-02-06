@@ -1,0 +1,13 @@
+{
+	"table": {
+		"actions": {
+			"add": "Add",
+			"edit": "Edit"
+		},
+		"cols": {
+			"code": "Code",
+			"name": "Service",
+			"price": "Price"
+		}
+	}
+}

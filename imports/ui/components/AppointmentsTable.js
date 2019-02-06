@@ -9,8 +9,7 @@ import { URLS } from '../constants';
 
 const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDelete }) => {
 	_renderAppointments = () => {
-		let appointmentsArray = [],
-			rowNumber = 1;
+		let appointmentsArray = [];
 
 		appointments.map( (appointment) => {
 			const { _id, date, patientId, observations, isCanceled, isConfirmed } = appointment;
@@ -32,7 +31,6 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 			appointmentsArray.push(
 				<tr key={_id} className={isCanceled?'table-dark':''}>
 					<td className="text-center" scope="row">{confirmBtn}</td>
-					<th scope="row">{rowNumber++}</th>
 					<td scope="row"><Link to={`${URLS.EDIT_APPOINTMENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 					<td>{moment(date).utc().format('HH:mm')} hs</td>
 					<td>{name}</td>
@@ -71,7 +69,6 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 											Confirm
 										</Trans>
 									</th>
-									<th scope="col">#</th>
 									<th scope="col">
 										<Trans i18nKey={'appointments.table.edit'}>
 											Edit

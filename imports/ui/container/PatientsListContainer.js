@@ -6,13 +6,13 @@ import Patients from '../../api/patients';
 import PatientsTable from '../components/PatientsTable';
 
 
-const PatientsListContainer = ({ patients }) => {
+const PatientsListContainer = ({ patients, isLoading }) => {
 	
 	const _handleDelete = (id) => {
 		Meteor.call('patient.remove', { _id: id });
 	};
 	
-	if(patients.length == 0) {
+	if(isLoading) {
 		return (
 			<div className="d-flex justify-content-center mt-5">
 				<div className="spinner-border text-primary" role="status">
@@ -33,5 +33,6 @@ export default withTracker(() => {
 
 	return {
 		patients: !isLoading ? Patients.find({}, { sort: { name: 1 } }).fetch() : [], 
+		isLoading,
 	};
 })(PatientsListContainer);

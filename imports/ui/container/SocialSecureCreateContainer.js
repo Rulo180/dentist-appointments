@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 
 import { URLS } from '../constants';
@@ -19,7 +18,7 @@ class SocialSecureCreateContainer extends PureComponent {
 					valid: true,
 				},
 				services: [
-					{name: '', code: ''},
+					{name: '', code: '', price: ''},
 				],
 			},
 		};
@@ -46,11 +45,17 @@ class SocialSecureCreateContainer extends PureComponent {
 		
 		if (name.slice(0, 7) === 'service') {
 			let newServices = [...this.state.formData.services];
-			const socialInput = name.slice(7,11);
-			if ( socialInput === 'Name') {
+			const socialInput = name.split('-')[0].slice(7);
+			switch(socialInput) {
+			case 'Name':
 				newServices[id] = { ...newServices[id], name: value };
-			} else if (socialInput === 'Code') {
+				break;
+			case 'Code':
 				newServices[id] = { ...newServices[id], code: value };
+				break;
+			case 'Price':
+				newServices[id] = { ...newServices[id], price: value };
+				break;
 			}
 			newFormData = {
 				...this.state.formData,
@@ -101,8 +106,4 @@ class SocialSecureCreateContainer extends PureComponent {
 	}
 }
  
-SocialSecureCreateContainer.propTypes = {
-
-};
-
 export default SocialSecureCreateContainer;

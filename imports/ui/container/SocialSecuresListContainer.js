@@ -12,9 +12,9 @@ export class SocialSecuresListContainer extends PureComponent {
 	};
 
 	render() {
-		const { socialSecures } = this.props;
+		const { socialSecures, isLoading } = this.props;
 
-		if(socialSecures.length == 0) {
+		if(isLoading) {
 			return (
 				<div className="d-flex justify-content-center mt-5">
 					<div className="spinner-border text-primary" role="status">
@@ -36,5 +36,6 @@ export default withTracker(() => {
 
 	return {
 		socialSecures: !loadingSocials ? SocialSecures.find({}, { sort: { name: 1 } }).fetch() : [],
+		isLoading: loadingSocials,
 	};
 })(SocialSecuresListContainer);

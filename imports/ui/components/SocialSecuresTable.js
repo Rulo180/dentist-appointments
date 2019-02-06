@@ -8,16 +8,18 @@ import { URLS } from '../constants';
 
 const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 	_renderSocialSecures = () => {
-		let socialsArray = [],
-			rowNumber = 1;
+		let socialsArray = [];
 
 		socialSecures.map((social) => {
 			const { _id, name, code } = social;
 			socialsArray.push(
 				<tr key={_id}>
-					<td scope="row">{rowNumber++}</td>
-					<td scope="row">{name}</td>
 					<td scope="row">{code}</td>
+					<td scope="row">
+						<Link to ={`${URLS.SOCIALS}/${_id}`}>
+							{name}
+						</Link>
+					</td>
 					<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 				</tr>
 			);
@@ -46,15 +48,14 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 						<table className="table">
 							<thead>
 								<tr>
-									<th scope="col">#</th>
-									<th scope="col">
-										<Trans i18nKey={'table.cols.name'}>
-											Name
-										</Trans>
-									</th>
 									<th scope="col">
 										<Trans i18nKey={'table.cols.code'}>
 											Code
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey={'table.cols.name'}>
+											Name
 										</Trans>
 									</th>
 									<th className="text-center">

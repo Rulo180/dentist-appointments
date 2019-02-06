@@ -13,6 +13,10 @@ let Service = new SimpleSchema({
 	name: {
 		type: String,
 		label: 'Name',
+	},
+	price: {
+		type: Number,
+		label: 'Price',
 	}
 });
 
@@ -35,9 +39,9 @@ SocialSecures.schema = new SimpleSchema({
 SocialSecures.attachSchema(SocialSecures.schema);
 
 Meteor.methods({
-	'socialSecures.list'() {
-		return SocialSecures.find({}).fetch;
-	},
+	// 'socialSecures.list'() {
+	// 	return SocialSecures.find({}).fetch;
+	// },
 	'socialSecure.find'({
 		_id,
 	}) {

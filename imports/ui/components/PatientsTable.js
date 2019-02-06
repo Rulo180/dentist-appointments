@@ -9,13 +9,11 @@ import { URLS } from '../constants';
 
 const PatientsTable = ({ patients, onDelete }) => {
 	const renderPatients = (patients ) => {
-		let patientsArray = [],
-			rowNumber = 1;
+		let patientsArray = [];
 		patients.map((patient) => {
 			const { _id, name, tel, birthDate } = patient;
 			patientsArray.push(
 				<tr key={_id}>
-					<th scope="row">{rowNumber++}</th>
 					<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 					<td>{name}</td>
 					<td>{tel}</td>
@@ -48,7 +46,6 @@ const PatientsTable = ({ patients, onDelete }) => {
 						<table className="table table-striped">
 							<thead>
 								<tr>
-									<th scope="col">#</th>
 									<th scope="col">
 										<Trans i18nKey="table.cols.edit">
 											Edit

@@ -8,7 +8,7 @@ import Patients from '../../api/patients';
 import AppointmentsTable from '../components/AppointmentsTable';
 
 
-const AppointmentsList = ({ appointments, patients }) => {
+const AppointmentsList = ({ appointments, patients, isLoading }) => {
 	const _handleDelete = (id) => {
 		Meteor.call('appointment.remove', { _id: id});
 	};
@@ -21,7 +21,7 @@ const AppointmentsList = ({ appointments, patients }) => {
 		Meteor.call('appointment.cancel', { _id: id});
 	};
 	
-	if(appointments.length == 0) {
+	if(isLoading) {
 		return (
 			<div className="d-flex justify-content-center mt-5">
 				<div className="spinner-border text-primary" role="status">
@@ -51,5 +51,6 @@ export default withTracker(() => {
 	return {
 		appointments: !isLoadingAppointments ? Appointments.find({}).fetch() : [], 
 		patients: !isLoadingPatients ? Patients.find({}).fetch() : [], 
+		isLoading: isLoadingAppointments,
 	};
 })(AppointmentsList);
