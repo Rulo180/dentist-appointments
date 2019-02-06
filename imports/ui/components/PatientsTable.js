@@ -8,22 +8,18 @@ import { URLS } from '../constants';
 
 
 const PatientsTable = ({ patients, onDelete }) => {
-	const renderPatients = (patients ) => {
-		let patientsArray = [];
-		patients.map((patient) => {
-			const { _id, name, tel, birthDate } = patient;
-			patientsArray.push(
-				<tr key={_id}>
-					<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
-					<td>{name}</td>
-					<td>{tel}</td>
-					<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
-					<td><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
-				</tr>
-			);
-		});
-		return patientsArray;
-	};
+	let patientRows = patients.map((patient) => {
+		const { _id, name, tel, birthDate } = patient;
+		return (
+			<tr key={_id}>
+				<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
+				<td>{name}</td>
+				<td>{tel}</td>
+				<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
+				<td><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
+			</tr>
+		);
+	});
 
 	return (
 		<div className="row justify-content-center">
@@ -70,7 +66,7 @@ const PatientsTable = ({ patients, onDelete }) => {
 								</tr>
 							</thead>
 							<tbody>
-								{renderPatients(patients)}
+								{patientRows}
 							</tbody>
 						</table>
 					</div>

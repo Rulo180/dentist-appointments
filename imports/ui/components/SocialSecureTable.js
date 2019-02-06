@@ -8,22 +8,15 @@ import { URLS } from '../constants';
 
 const SocialSecureTable = ({ socialSecure }) => {
 
-	const _renderServices = () => {
-		let services = [];
-
-		socialSecure.services.map((service) => {
-			services.push(
-				<tr key={service.code}>
-					<td>{service.code}</td>
-					<td>{service.name}</td>
-					<td>${service.price}</td>
-				</tr>
-			);
-		});
-
-		return services;
-	};
-
+	let serviceRows = socialSecure.services.map((service) => {
+		return (
+			<tr key={service.code}>
+				<td>{service.code}</td>
+				<td>{service.name}</td>
+				<td>${service.price}</td>
+			</tr>
+		);
+	});
 
 	return (
 		<div className="row justify-content-center">
@@ -62,7 +55,7 @@ const SocialSecureTable = ({ socialSecure }) => {
 								</tr>
 							</thead>	
 							<tbody>
-								{_renderServices()}
+								{serviceRows}
 							</tbody>
 						</table>
 					</div>

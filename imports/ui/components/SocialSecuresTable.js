@@ -7,26 +7,21 @@ import { URLS } from '../constants';
 
 
 const SocialSecuresTable = ({ socialSecures, onDelete }) => {
-	_renderSocialSecures = () => {
-		let socialsArray = [];
-
-		socialSecures.map((social) => {
-			const { _id, name, code } = social;
-			socialsArray.push(
-				<tr key={_id}>
-					<td><Link to={`${URLS.EDIT_SOCIALS}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
-					<td scope="row">{code}</td>
-					<td scope="row">
-						<Link to ={`${URLS.SOCIALS}/${_id}`}>
-							{name}
-						</Link>
-					</td>
-					<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
-				</tr>
-			);
-		});
-		return socialsArray;
-	};
+	let socialSecureRows = socialSecures.map((social) => {
+		const { _id, name, code } = social;
+		return (
+			<tr key={_id}>
+				<td><Link to={`${URLS.EDIT_SOCIALS}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
+				<td scope="row">{code}</td>
+				<td scope="row">
+					<Link to ={`${URLS.SOCIALS}/${_id}`}>
+						{name}
+					</Link>
+				</td>
+				<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
+			</tr>
+		);
+	});
 
 	return (
 		<div className="row justify-content-center">
@@ -72,7 +67,7 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 								</tr>
 							</thead>
 							<tbody>
-								{this._renderSocialSecures()}
+								{socialSecureRows}
 							</tbody>
 						</table>
 					</div>
