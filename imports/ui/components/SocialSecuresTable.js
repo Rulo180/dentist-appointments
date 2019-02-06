@@ -14,6 +14,7 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 			const { _id, name, code } = social;
 			socialsArray.push(
 				<tr key={_id}>
+					<td><Link to={`${URLS.EDIT_SOCIALS}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 					<td scope="row">{code}</td>
 					<td scope="row">
 						<Link to ={`${URLS.SOCIALS}/${_id}`}>
@@ -48,6 +49,11 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 						<table className="table">
 							<thead>
 								<tr>
+									<th scope="col">
+										<Trans i18nKey="table.actions.edit">
+											Edit
+										</Trans>
+									</th>
 									<th scope="col">
 										<Trans i18nKey={'table.cols.code'}>
 											Code

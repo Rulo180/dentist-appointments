@@ -15,6 +15,7 @@ import AppointmentCreateContainer from '../imports/ui/container/AppointmentCreat
 import AppointmentEditContainer from '../imports/ui/container/AppointmentEditContainer';
 import SocialSecuresListContainer from '../imports/ui/container/SocialSecuresListContainer';
 import SocialSecureCreateContainer from '../imports/ui/container/SocialSecureCreateContainer';
+import SocialSecureEditContainer from '../imports/ui/container/SocialSecureEditContainer';
 import SocialSecureViewContainer from '../imports/ui/container/SocialSecureViewContainer';
 
 
@@ -37,6 +38,7 @@ const AppRouter = () => (
 				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
 				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
 				<PrivateRoute exact path="/appointments" component={AppointmentsListContainer}/>
+				<PrivateRoute path="/socials/edit/:id" component={SocialSecureEditContainer} />
 				<PrivateRoute path="/socials/add" component={SocialSecureCreateContainer} />
 				<PrivateRoute path="/socials/:id" component={SocialSecureViewContainer} />
 				<PrivateRoute exact path="/socials" component={SocialSecuresListContainer} />

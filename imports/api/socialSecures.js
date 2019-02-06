@@ -67,6 +67,27 @@ Meteor.methods({
 			services,
 		});
 	},
+	'socialSecure.edit'({
+		id,
+		data,
+	}) {
+		const { name, code, services } = data;
+		check(id, String);
+		check(name, String);
+		check(code, String);
+		check(services, Array);
+		if (! this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+		return SocialSecures.update(
+			id,
+			{$set: {
+				name,
+				code,
+				services,
+			}}
+		);
+	},
 	'socialSecure.remove'({
 		_id,
 	}) {
