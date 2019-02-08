@@ -23,7 +23,22 @@
 	"form": {
 		"actions": {
 			"cancel": "Cancelar",
+			"reset": "Reiniciar",
 			"submit": "Guardar"
+		}
+	},
+	"modal": {
+		"actions": {
+			"accept": "Aceptar",
+			"cancel": "Cancelar",
+			"close": "Cerrar",
+			"confirm": "Confirmar"
+		},
+		"messages": {
+			"delete": "Estás seguro de eliminar {{object}}?"
+		},
+		"titles": {
+			"delete": "Confirmación de borrado"
 		}
 	},
 	"navbar": {

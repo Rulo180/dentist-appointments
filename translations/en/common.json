@@ -23,7 +23,22 @@
 	"form": {
 		"actions": {
 			"cancel": "Cancel",
+			"reset": "Reset",
 			"submit": "Save"
+		}
+	},
+	"modal": {
+		"actions": {
+			"accept": "OK",
+			"cancel": "Cancel",
+			"close": "Close",
+			"confirm": "Confirm"
+		},
+		"messages": {
+			"delete": "Are you sure to delete {{object}}?"
+		},
+		"titles": {
+			"delete": "Delete confirmation"
 		}
 	},
 	"navbar": {
