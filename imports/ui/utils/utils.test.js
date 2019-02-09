@@ -1,6 +1,8 @@
 import { assert } from 'chai';
 
 import { convertTimeToMilliseconds } from './utils';
+import { mapPatientsToOptions } from './utils';
+
 
 describe('Utils', function() {
 	describe('convertTimeToMilliseconds', function() {
@@ -31,6 +33,23 @@ describe('Utils', function() {
 			let result = convertTimeToMilliseconds(time);
 			let expected = 86400000;
 			assert.equal(result, expected);
+		});
+	});
+	describe('Map functions', function() {
+		it('Should return an array', function() {
+			let result = mapPatientsToOptions();
+			assert.isArray(result);
+		});
+		it('Should return empty array on empty entry data', function() {
+			let result = mapPatientsToOptions();
+			assert.isEmpty(result);
+		});
+		it('All values should have value and label', function() {
+			const patients = [{
+				_id: '123', name: 'pedro'
+			}];
+			let result = mapPatientsToOptions(patients);
+			assert.deepEqual(result[0], { value: '123', label: 'pedro' });
 		});
 	});
 });

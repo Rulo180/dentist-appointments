@@ -5,18 +5,12 @@ import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
 
 import { URLS } from '../constants';
+import { mapPatientsToOptions } from '../utils/utils';
 
 
 const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) => {
-	_mapPatientsToOptions = () => {
-		let options = [];
-		patients.map((patient) => {
-			options.push({ value: patient._id, label: patient.name });
-		});
-		return options;
-	};
 
-	const options = this._mapPatientsToOptions();
+	const options = mapPatientsToOptions();
 
 	return (
 		<div className="row justify-content-center">
