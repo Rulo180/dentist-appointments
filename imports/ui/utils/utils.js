@@ -1,4 +1,5 @@
 import { check } from 'meteor/check';
+import moment from 'moment';
 
 const MILLISECONDS_IN_HOUR = 3600000;
 const MILLISECONDS_IN_MINUTE = 60000;
@@ -22,3 +23,29 @@ export const mapPatientsToOptions = (patients) => {
 
 	return options;
 };
+
+export const mapAppointmentToForm = (appointment) => {
+	
+	if(!appointment || !appointment.patientId || !appointment.date) {
+		return {};
+	}
+
+	return {
+		patientId: {
+			value: appointment.patientId,
+			valid: true,
+		},
+		time: {
+			value: moment(appointment.date).utc().format('HH:mm'),
+			valid: true,
+		},
+		date: {
+			value: moment(appointment.date).utc().format('YYYY-MM-DD'),
+			valid: true,
+		},
+		observations: {
+			value: appointment.observations || '',
+			valid: true,
+		},
+	};
+}

@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import moment from 'moment';
 
 import { URLS } from '../constants';
 import Patients from '../../api/patients';
-import { convertTimeToMilliseconds } from '../utils/utils';
+import { convertTimeToMilliseconds, mapAppointmentToForm } from '../utils/utils';
 
 import AppointmentForm from '../components/AppointmentForm';
 
@@ -41,31 +40,10 @@ class AppointmentEditContainer extends PureComponent {
 			(err, res) => {
 				this.setState({
 					isLoading: false,
-					formData: this._mapAppointmentToForm(res),
+					formData: mapAppointmentToForm(res),
 				});
 			}
 		);
-	}
-	
-	_mapAppointmentToForm = (appointment) => {
-		return ({
-			patientId: {
-				value: appointment.patientId,
-				valid: true,
-			},
-			time: {
-				value: moment(appointment.date).utc().format('HH:mm'),
-				valid: true,
-			},
-			date: {
-				value: moment(appointment.date).utc().format('YYYY-MM-DD'),
-				valid: true,
-			},
-			observations: {
-				value: appointment.observations,
-				valid: true,
-			},
-		});
 	}
 
 	_handleChange = (event) => {
