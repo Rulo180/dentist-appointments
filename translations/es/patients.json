@@ -22,8 +22,10 @@
 		"add": "Agregar",
 		"cols": {
 			"birthDate": "Fecha de nacimiento",
+			"delete": "Borrar",
 			"edit": "Editar",
 			"name": "Nombre y Apellido",
+			"socialSecure": "Obra Social",
 			"tel": "Teléfono"
 		},
 		"title": "Pacientes"

@@ -7,15 +7,16 @@ import { translate, Trans } from 'react-i18next';
 import { URLS } from '../constants';
 
 
-const PatientsTable = ({ patients, onDelete }) => {
+const PatientsTable = ({ patients, socialSecures, onDelete }) => {
 	let patientRows = patients.map((patient) => {
 		const { _id, name, tel, birthDate } = patient;
 		return (
 			<tr key={_id}>
-				<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td>{name}</td>
+				<td>{socialSecures.filter((social) => social._id === patient.socialSecureId)[0].name}</td>
 				<td>{tel}</td>
 				<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
+				<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 			</tr>
 		);
@@ -43,13 +44,13 @@ const PatientsTable = ({ patients, onDelete }) => {
 							<thead>
 								<tr>
 									<th scope="col">
-										<Trans i18nKey="table.cols.edit">
-											Edit
+										<Trans i18nKey="table.cols.name">
+											Name
 										</Trans>
 									</th>
 									<th scope="col">
-										<Trans i18nKey="table.cols.name">
-											Name
+										<Trans i18nKey="table.cols.socialSecure">
+											Social Secure
 										</Trans>
 									</th>
 									<th scope="col">
@@ -62,7 +63,16 @@ const PatientsTable = ({ patients, onDelete }) => {
 											Birth Date
 										</Trans>
 									</th>
-									<th scope="col"></th>
+									<th scope="col">
+										<Trans i18nKey="table.cols.edit">
+											Edit
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey="table.cols.delete">
+											Delete
+										</Trans>
+									</th>
 								</tr>
 							</thead>
 							<tbody>
