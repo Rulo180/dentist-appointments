@@ -10,7 +10,7 @@ import { mapPatientsToOptions } from '../utils/utils';
 
 const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) => {
 
-	const options = mapPatientsToOptions();
+	const options = mapPatientsToOptions(patients);
 
 	return (
 		<div className="row justify-content-center">

@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { withTracker } from 'meteor/react-meteor-data';
 import moment from 'moment';
 
+import SocialSecures from '../../api/socialSecures';
+import { mapSocialSecuresToOptions } from '../utils/utils';
 import { URLS } from '../constants';
 
 import PatientForm from '../components/PatientForm';
@@ -23,6 +27,10 @@ class PatientEditContainer extends PureComponent {
 					value: '',
 					valid: true,
 				},
+				socialSecureId: {
+					value: '',
+					valid: true,
+				}
 			},
 			isLoading: true,
 		};
@@ -35,11 +43,12 @@ class PatientEditContainer extends PureComponent {
 				this.setState({
 					isLoading: false,
 					formData: this._mapPatientToForm(res),
+					createdAt: res.createdAt,
 				});
 			}
 		);
 	}
-
+	// TODO: export to utils and test
 	_mapPatientToForm = (patient) => {
 		return ({
 			name: {
@@ -70,16 +79,30 @@ class PatientEditContainer extends PureComponent {
 			formData: newFormData,
 		});
 	}
+
+	_handleSelect = (selectedOption) => {
+		let newAppointment = {
+			...this.state.formData,
+			socialSecureId: {
+				value: selectedOption.value,
+				valid: true,
+			},
+		};
+		this.setState({
+			formData: newAppointment,
+		});
+	}
 	
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		const { name, tel, birthDate } = this.state.formData;
+		const { name, tel, birthDate, socialSecureId } = this.state.formData;
 		Meteor.call('patient.edit', {
 			id: this.props.match.params.id,
 			data: {
 				name: name.value,
 				tel: tel.value,
 				birthDate: moment(birthDate.value).toDate(),
+				socialSecureId: socialSecureId.value,
 			}
 		}, () => {
 			this.props.history.push(URLS.PATIENTS);
@@ -91,6 +114,7 @@ class PatientEditContainer extends PureComponent {
 			isLoading,
 			formData,
 		} = this.state;
+		const { socialSecures } = this.props;
 
 		if (isLoading) {
 			return (
@@ -103,9 +127,22 @@ class PatientEditContainer extends PureComponent {
 		}
 		
 		return (
-			<PatientForm formData={formData} onChange={this._handleChange} onSubmit={this._handleSubmit} />
+			<PatientForm 
+				formData={formData}
+				socialsOptions={mapSocialSecuresToOptions(socialSecures)}
+				onChange={this._handleChange}
+				onSelect={this._handleSelect}
+				onSubmit={this._handleSubmit}
+			/>
 		);
 	}
 }
  
-export default PatientEditContainer;
+export default withTracker(() => {
+	const socialSecuresHandler = Meteor.subscribe('socialSecures');
+	const isLoading = !socialSecuresHandler.ready();
+
+	return {
+		socialSecures: !isLoading ? SocialSecures.find({}).fetch() : [],
+	};
+})(PatientEditContainer);

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
+import Select from 'react-select';
 
 import { URLS } from '../constants';
 
 
-const PatientForm = ({ formData, onChange, onSubmit, t }) => {
+const PatientForm = ({ formData, socialsOptions, onChange, onSelect, onSubmit, t }) => {
 	return (
 		<div className="row justify-content-center">
 			<div className="col-10 col-md-8 col-lg-6">
@@ -52,6 +53,23 @@ const PatientForm = ({ formData, onChange, onSubmit, t }) => {
 									/>
 								</div>
 							</div>
+							<div className="form-group">
+								<div className="row justify-content-between no-gutters">
+									<label htmlFor="socialsSelect">
+										<Trans i18nKey={'form.fields.social.label'}>Social Secure</Trans>
+									</label>
+									<Link to={URLS.CREATE_SOCIALS}>
+										<Trans i18nKey={''}>
+											Create social secure
+										</Trans>
+									</Link>
+								</div>
+								<Select
+									name="socialsSelect"
+									options={socialsOptions}
+									onChange={onSelect}
+								/>
+							</div>
 							<div className="row align-items-center">
 								<div className="col text-right">
 									<button type="submit" className="btn btn-primary">
@@ -59,9 +77,9 @@ const PatientForm = ({ formData, onChange, onSubmit, t }) => {
 									</button>
 								</div>
 								<div className="col">
-									<NavLink to={URLS.PATIENTS}>
+									<Link to={URLS.PATIENTS}>
 										<Trans i18nKey={'form.actions.cancel'}>Cancel</Trans>
-									</NavLink>
+									</Link>
 								</div>
 							</div>
 						</form>
@@ -73,7 +91,10 @@ const PatientForm = ({ formData, onChange, onSubmit, t }) => {
 };
 
 PatientForm.propTypes = {
+	formData: PropTypes.object.isRequired,
+	socialsOptions: PropTypes.array.isRequired,
 	onChange: PropTypes.func.isRequired,
+	onSelect: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 };
 

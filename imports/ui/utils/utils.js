@@ -1,5 +1,6 @@
 import { check } from 'meteor/check';
 import moment from 'moment';
+import { isEmpty } from 'lodash';
 
 const MILLISECONDS_IN_HOUR = 3600000;
 const MILLISECONDS_IN_MINUTE = 60000;
@@ -18,8 +19,20 @@ export const mapPatientsToOptions = (patients) => {
 		return {
 			value: patient._id,
 			label: patient.name
-		}
-	})
+		};
+	});
+
+	return options;
+};
+
+export const mapSocialSecuresToOptions = (socialSecures) => {
+	if (isEmpty(socialSecures)) {
+		return [];
+	}
+
+	const options = socialSecures.map((socialSecure) => {
+		return { value: socialSecure._id, label: socialSecure.name };
+	});
 
 	return options;
 };
