@@ -22,6 +22,10 @@ Patients.schema = new SimpleSchema({
 		type: Date,
 		label: 'Birth Date',
 	},
+	socialSecureId: {
+		type: String,
+		label: 'Social secure',
+	},
 	createdAt: {
 		type: Date,
 		label: 'Created at',
@@ -53,9 +57,11 @@ Meteor.methods({
 		name,
 		tel,
 		birthDate,
+		socialSecureId,
 	}) {
 		check(name, String);
 		check(birthDate, Date);
+		check(socialSecureId, String);
 		if (! this.userId) {
 			throw new Meteor.Error('not-authorized');
 		}
@@ -63,27 +69,27 @@ Meteor.methods({
 			name,
 			tel,
 			birthDate,
-			createdBy: this.userId,
-			createdAt: new Date(),
+			socialSecureId,
 		});
 	},
 	'patient.edit'({
 		id,
 		data,
 	}) {
-		const { name, birthDate, tel } = data;
-		check(id, String);
+		const { name, birthDate, tel, socialSecureId } = data;
 		check(name, String);
 		check(birthDate, Date);
+		check(socialSecureId, String);
 		if (! this.userId) {
 			throw new Meteor.Error('not-authorized');
 		}
-		Patients.update(
+		return Patients.update(
 			id,
 			{$set: {
-				name: name,
-				tel: tel,
-				birthDate: birthDate,
+				name,
+				birthDate,
+				tel,
+				socialSecureId,
 			}}
 		);
 	},
@@ -98,16 +104,11 @@ Meteor.methods({
 	}
 });
 
-// Patients.allow({
-// 	insert: function(userId) {
-// 		return !!userId;
-// 	}
-// });
-
 Factory.define('patient', Patients, {
 	name: () => faker.name.findName(),
 	tel: () => faker.phone.phoneNumber(),
 	birthDate: () => faker.date.past(15),
+	socialSecureId: () => (new Mongo.Collection.ObjectID)._str,
 	createdAt: () => new Date(),
 	createdBy: () => (new Mongo.Collection.ObjectID)._str, 
 });

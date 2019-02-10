@@ -1,7 +1,11 @@
 import { assert } from 'chai';
 
 import { convertTimeToMilliseconds } from './utils';
-import { mapPatientsToOptions, mapAppointmentToForm } from './utils';
+import {
+	mapPatientsToOptions,
+	mapAppointmentToForm,
+	mapSocialSecuresToOptions,
+} from './utils';
 
 
 describe('Utils', function() {
@@ -35,21 +39,44 @@ describe('Utils', function() {
 			assert.equal(result, expected);
 		});
 	});
-	describe('Map functions', function() {
-		it('mapPatientsToOptions Should return an array', function() {
-			let result = mapPatientsToOptions();
+
+	describe('MapPatientsToOptions', function() {
+		const patientsMock = [{
+			_id: '123',
+			name: 'John Doe',
+		}];
+		it('should return an array', function() {
+			let result = mapPatientsToOptions(patientsMock);
 			assert.isArray(result);
 		});
-		it('mapPatientsToOptions Should return empty array on empty entry data', function() {
+		it('should return empty array on empty entry data', function() {
 			let result = mapPatientsToOptions();
 			assert.isEmpty(result);
 		});
-		it('mapPatientsToOptions All values should have value and label', function() {
-			const patients = [{
-				_id: '123', name: 'pedro'
-			}];
-			let result = mapPatientsToOptions(patients);
-			assert.deepEqual(result[0], { value: '123', label: 'pedro' });
+		it('should return an option representation', function() {
+			let result = mapPatientsToOptions(patientsMock);
+			assert.deepEqual(result[0], { value: '123', label: 'John Doe' });
+		});
+	});
+
+	describe('MapSocialSecuresToOptions', () => {
+		const socialSecureMock = [{
+			_id: '111',
+			name: 'OSEP',
+		}];
+		const emptySocialSecureMock = [];
+
+		it('Should return an array', function() {
+			let result = mapSocialSecuresToOptions(socialSecureMock);
+			assert.isArray(result);
+		});
+		it('Should return empty array on empty entry data', function() {
+			let result = mapSocialSecuresToOptions(emptySocialSecureMock);
+			assert.isEmpty(result);
+		});
+		it('should return an option representation', function() {
+			let result = mapSocialSecuresToOptions(socialSecureMock);
+			assert.deepEqual(result[0], { value: '111', label: 'OSEP' });
 		});
 
 		it('mapAppointmentToForm Should return an empty objetc if arguments are not valid', function() {
@@ -89,7 +116,7 @@ describe('Utils', function() {
 					value: 'testing observations...',
 					valid: true
 				}
-			}
+			};
 			assert.deepEqual(result, expected);
 		});
 		it('mapAppointmentToForm Should return empty string on observation if there is no value', function() {
@@ -104,7 +131,7 @@ describe('Utils', function() {
 			const expected = {
 				value: '',
 				valid: true,
-			}
+			};
 			assert.deepEqual(observations, expected);
 		});
 
