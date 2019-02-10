@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+
 import Patients from '../../api/patients';
+import SocialSecures from '../../api/socialSecures';
 
 import PatientsTable from '../components/PatientsTable';
 import DeleteModal from '../components/DeleteModal';
@@ -29,7 +31,7 @@ class PatientsListContainer extends PureComponent {
 	}
 
 	render() { 
-		const { patients, isLoading } = this.props;
+		const { patients, socialSecures,isLoading } = this.props;
 		const { showConfirmationModal, modalPatientId } = this.state;
 
 		if(isLoading) {
@@ -44,7 +46,7 @@ class PatientsListContainer extends PureComponent {
 
 		return (
 			<section>
-				<PatientsTable patients={patients} onDelete={this._showConfirmationModal} />
+				<PatientsTable patients={patients} socialSecures={socialSecures} onDelete={this._showConfirmationModal} />
 				<DeleteModal 
 					isOpen={showConfirmationModal}
 					title="Delete confirmation"
@@ -59,10 +61,13 @@ class PatientsListContainer extends PureComponent {
  
 export default withTracker(() => {
 	const patientsHandler = Meteor.subscribe('patients');
-	const isLoading = !patientsHandler.ready();
+	const isLoadingPatients = !patientsHandler.ready();
+	const socialsHandler = Meteor.subscribe('socialSecures');
+	const isLoadingSocials = !socialsHandler.ready();
 
 	return {
-		patients: !isLoading ? Patients.find({}, { sort: { name: 1 } }).fetch() : [], 
-		isLoading,
+		patients: !isLoadingPatients ? Patients.find({}, { sort: { name: 1 } }).fetch() : [], 
+		socialSecures: !isLoadingSocials ? SocialSecures.find({}).fetch() : [], 
+		isLoading: isLoadingPatients || isLoadingSocials ,
 	};
 })(PatientsListContainer);
