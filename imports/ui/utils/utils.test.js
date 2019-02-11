@@ -5,6 +5,8 @@ import {
 	mapPatientsToOptions,
 	mapAppointmentToForm,
 	mapSocialSecuresToOptions,
+	mapPatientToForm,
+	mapSocialSecureToForm
 } from './utils';
 
 
@@ -79,7 +81,7 @@ describe('Utils', function() {
 			assert.deepEqual(result[0], { value: '111', label: 'OSEP' });
 		});
 
-		it('mapAppointmentToForm Should return an empty objetc if arguments are not valid', function() {
+		it('mapAppointmentToForm Should return an empty object if arguments are not valid', function() {
 			let result = mapAppointmentToForm();
 			assert.isObject(result, 'On no arguments returns an empty object');
 		});
@@ -95,10 +97,10 @@ describe('Utils', function() {
 			const expectedDay = (now.getUTCDate() < 10) ? ('0' + now.getUTCDate()) : now.getUTCDate();
 			const month = now.getUTCMonth() + 1;
 			const expectedMonth = ( month < 10 ) ? '0' + month : month;
-			const expectedDate = now.getFullYear() + '-' + expectedMonth + '-' + expectedDay
+			const expectedDate = now.getFullYear() + '-' + expectedMonth + '-' + expectedDay;
 			
-			const expectedHours = (now.getUTCHours() < 10) ? '0' + now.getUTCHours() : now.getUTCHours()
-			const expectedMinutes = (now.getUTCMinutes() < 10) ? '0' + now.getUTCMinutes() : now.getUTCMinutes()
+			const expectedHours = (now.getUTCHours() < 10) ? '0' + now.getUTCHours() : now.getUTCHours();
+			const expectedMinutes = (now.getUTCMinutes() < 10) ? '0' + now.getUTCMinutes() : now.getUTCMinutes();
 			const expected = {
 				patientId: {
 					value: '123456',
@@ -134,6 +136,70 @@ describe('Utils', function() {
 			};
 			assert.deepEqual(observations, expected);
 		});
+	});
 
+
+	describe('MapPatientToForm', () => {
+		const now = new Date();
+		const patientMock = {
+			name: 'Jon Snow',
+			tel: '4222555',
+			birthDate: now
+		};
+		
+		it('Should return an empty object if arguments are not valid', function() {
+			let result = mapPatientToForm();
+			assert.isObject(result, 'On no arguments returns an empty object');
+		});
+		it('Should return an option representation', function() {
+			let result = mapPatientToForm(patientMock);
+
+			const expectedDay = (now.getUTCDate() < 10) ? ('0' + now.getUTCDate()) : now.getUTCDate();
+			const month = now.getUTCMonth() + 1;
+			const expectedMonth = ( month < 10 ) ? '0' + month : month;
+			const expectedDate = now.getFullYear() + '-' + expectedMonth + '-' + expectedDay;
+
+			assert.deepEqual(result, {
+				name: {
+					value: 'Jon Snow',
+					valid: true,
+				},
+				tel: {
+					value: '4222555',
+					valid: true,
+				},
+				birthDate: {
+					value: expectedDate,
+					valid: true,
+				},
+			});
+		});
+	});
+
+	describe('MapSocialSecureToForm', () => {
+		const socialSecureMock = {
+			name: 'OSEP',
+			code: '1234',
+			services: []
+		};
+		
+		it('Should return an empty object if arguments are not valid', function() {
+			let result = mapSocialSecureToForm();
+			assert.isObject(result, 'On no arguments returns an empty object');
+		});
+		it('Should return an option representation', function() {
+			let result = mapSocialSecureToForm(socialSecureMock);
+			assert.deepEqual(result, {
+				name: {
+					value: 'OSEP',
+					valid: true,
+				},
+				code: {
+					value: '1234',
+					valid: true,
+				},
+				services: []
+			});
+		});
 	});
 });

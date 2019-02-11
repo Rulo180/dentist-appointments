@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 
 import { URLS } from '../constants';
+import { mapSocialSecureToForm } from '../../ui/utils/utils';
 
 import SocialSecureForm from '../components/SocialSecureForm';
 
@@ -32,24 +33,10 @@ class SocialSecureEditContainer extends PureComponent {
 			(err, res) => {
 				this.setState({
 					isLoading: false,
-					formData: this._mapSocialSecureToForm(res),
+					formData: mapSocialSecureToForm(res),
 				});
 			}
 		);
-	}
-
-	_mapSocialSecureToForm = (socialSecure) => {
-		return ({
-			name: {
-				value: socialSecure.name,
-				valid: true,
-			},
-			code: {
-				value: socialSecure.code,
-				valid: true,
-			},
-			services:  socialSecure.services,
-		});
 	}
 
 	_handleAdd = () => {

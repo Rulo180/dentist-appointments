@@ -4,7 +4,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import moment from 'moment';
 
 import SocialSecures from '../../api/socialSecures';
-import { mapSocialSecuresToOptions } from '../utils/utils';
+import { mapSocialSecuresToOptions, mapPatientToForm } from '../utils/utils';
 import { URLS } from '../constants';
 
 import PatientForm from '../components/PatientForm';
@@ -42,28 +42,11 @@ class PatientEditContainer extends PureComponent {
 			(err, res) => {
 				this.setState({
 					isLoading: false,
-					formData: this._mapPatientToForm(res),
+					formData: mapPatientToForm(res),
 					createdAt: res.createdAt,
 				});
 			}
 		);
-	}
-	// TODO: export to utils and test
-	_mapPatientToForm = (patient) => {
-		return ({
-			name: {
-				value: patient.name,
-				valid: true,
-			},
-			tel: {
-				value: patient.tel,
-				valid: true,
-			},
-			birthDate: {
-				value: moment(patient.birthDate).format('YYYY-MM-DD').toString(),
-				valid: true,
-			},
-		});
 	}
 
 	_handleChange = (event) => {
