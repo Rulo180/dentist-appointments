@@ -22,8 +22,10 @@
 		"add": "Add",
 		"cols": {
 			"birthDate": "Birth Date",
+			"delete": "Delete",
 			"edit": "Edit",
 			"name": "Name",
+			"socialSecure": "Social Secure",
 			"tel": "Phone number"
 		},
 		"title": "Patients"
