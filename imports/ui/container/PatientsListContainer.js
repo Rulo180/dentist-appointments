@@ -13,7 +13,7 @@ class PatientsListContainer extends PureComponent {
 		super(props);
 		this.state = {
 			showConfirmationModal: false,
-			modalPatientId: '',
+			modalPatientId: null,
 		};
 	}
 
@@ -27,7 +27,7 @@ class PatientsListContainer extends PureComponent {
 	}
 
 	_closeConfirmationModal = () => {
-		this.setState({ showConfirmationModal: false });
+		this.setState({ showConfirmationModal: false, modalPatientId: null });
 	}
 
 	render() { 
