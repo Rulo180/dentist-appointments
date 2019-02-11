@@ -40,7 +40,7 @@ export const mapSocialSecuresToOptions = (socialSecures) => {
 export const mapAppointmentToForm = (appointment) => {
 	
 	if(!appointment || !appointment.patientId || !appointment.date) {
-		return {};
+		return ({});
 	}
 
 	return {
@@ -61,4 +61,45 @@ export const mapAppointmentToForm = (appointment) => {
 			valid: true,
 		},
 	};
+};
+
+export const mapPatientToForm = (patient) => {
+	
+	if(!patient || !patient.name || !patient.birthDate) {
+		return ({});
+	}
+
+	return ({
+		name: {
+			value: patient.name,
+			valid: true,
+		},
+		tel: {
+			value: patient.tel,
+			valid: true,
+		},
+		birthDate: {
+			value: moment(patient.birthDate).format('YYYY-MM-DD').toString(),
+			valid: true,
+		},
+	});
+};
+
+export const mapSocialSecureToForm = (socialSecure) => {
+	
+	if(!socialSecure || !socialSecure.name || !socialSecure.code) {
+		return ({});
+	}
+
+	return ({
+		name: {
+			value: socialSecure.name,
+			valid: true,
+		},
+		code: {
+			value: socialSecure.code,
+			valid: true,
+		},
+		services:  socialSecure.services,
+	});
 };
