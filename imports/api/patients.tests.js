@@ -54,7 +54,7 @@ if (Meteor.isServer) {
 				birthDate,
 				socialSecureId,
 			}], options);
-			
+
 			assert.equal(Patients.find({ name }).count(), 1);
 		});
 		it('leaves createdAt on update', function() {
