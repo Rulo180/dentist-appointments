@@ -29,16 +29,10 @@ Patients.schema = new SimpleSchema({
 	createdAt: {
 		type: Date,
 		label: 'Created at',
-		autoValue: function() {
-			return new Date();
-		}
 	},
 	createdBy: {
 		type: String,
 		label: 'Created by',
-		autoValue: function() {
-			return this.userId;
-		},
 	},
 });
 
@@ -70,6 +64,8 @@ Meteor.methods({
 			tel,
 			birthDate,
 			socialSecureId,
+			createdAt: new Date(),
+			createdBy: this.userId,
 		});
 	},
 	'patient.edit'({
