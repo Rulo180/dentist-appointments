@@ -51,6 +51,6 @@ export default withTracker(() => {
 	return {
 		appointments: !isLoadingAppointments ? Appointments.find({}).fetch() : [], 
 		patients: !isLoadingPatients ? Patients.find({}).fetch() : [], 
-		isLoading: isLoadingAppointments,
+		isLoading: isLoadingAppointments || isLoadingPatients,
 	};
 })(AppointmentsList);
