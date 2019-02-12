@@ -26,7 +26,7 @@ class SocialSecureCreateContainer extends PureComponent {
 
 	_handleAdd = () => {
 		this.setState((prevState) => ({
-			formData: {...prevState.formData, services: prevState.formData.services.concat({name: '', code: ''})},
+			formData: {...prevState.formData, services: prevState.formData.services.concat({name: '', code: '', price: ''})},
 		}));
 	};
 
