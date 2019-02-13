@@ -1,0 +1,15 @@
+{
+	"presets": [
+		"es2015",
+		"react",
+		"meteor"
+	],
+	"plugins": [
+		"es2015",
+		"react",
+		"istanbul"
+	],
+	"parserOpts": {
+		"plugins": ["jsx"]
+	}
+}

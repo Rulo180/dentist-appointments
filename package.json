@@ -4,12 +4,23 @@
   "eslintConfig": {
     "extends": "@meteorjs/eslint-config-meteor"
   },
+  "babel": {
+    "env": {
+      "COVERAGE": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha --port 3100",
     "test:watch": "TEST_WATCH=1 meteor test --driver-package meteortesting:mocha --port 3100",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha --port 3100",
     "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "coverage:unit": "BABEL_ENV=COVERAGE TEST_BROWSER_DRIVER=puppeteer COVERAGE=1 COVERAGE_OUT_HTML=1 COVERAGE_APP_FOLDER=$PWD/ meteor test --once --driver-package meteortesting:mocha --port 3200",
+    "coverage:watch": "BABEL_ENV=COVERAGE COVERAGE=1 COVERAGE_VERBOSE=1 COVERAGE_APP_FOLDER=$PWD/ TEST_WATCH=1 meteor test --driver-package meteortesting:mocha --port 3200",
     "lint": "npm run eslint ; npm run sasslint"
   },
   "dependencies": {
@@ -37,6 +48,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.1.0",
     "chai": "^4.2.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
@@ -46,6 +58,7 @@
     "eslint-plugin-react": "^7.12.3",
     "faker": "^4.1.0",
     "moment": "^2.24.0",
+    "puppeteer": "^1.12.2",
     "sass-lint": "^1.12.1",
     "sinon": "^7.2.3"
   }
