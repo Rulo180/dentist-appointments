@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
+import { Factory } from 'meteor/dburles:factory';
+import faker from 'faker';
 import SimpleSchema from 'simpl-schema';
 
 
@@ -33,16 +35,10 @@ Appointments.schema = new SimpleSchema({
 	createdAt: {
 		type: Date,
 		label: 'Created at',
-		autoValue: function() {
-			return new Date();
-		}
 	},
 	createdBy: {
 		type: String,
 		label: 'Created by',
-		autoValue: function() {
-			return this.userId;
-		},
 	},
 });
 
@@ -64,6 +60,8 @@ Meteor.methods({
 		date,
 		observations,
 		patientId,
+		createdAt,
+		createdBy,
 	}) {
 		check(date, Date);
 		check(observations, String);
@@ -75,6 +73,8 @@ Meteor.methods({
 			date,
 			observations,
 			patientId,
+			createdAt: createdAt || new Date(),
+			createdBy: createdBy || this.userId,
 		});
 	},
 	'appointment.edit'({
@@ -141,6 +141,34 @@ Meteor.methods({
 		}
 		Appointments.remove({ _id });
 	},
+});
+
+Factory.define('appointment', Appointments, {
+	date: () => faker.date.past(15),
+	observations: () => faker.lorem.text(),
+	patientId: () => (new Mongo.Collection.ObjectID)._str,
+	isConfirmed: () => false,
+	isCanceled: () => false,
+	createdAt: () => new Date(),
+	createdBy: () => (new Mongo.Collection.ObjectID)._str, 
+});
+Factory.define('confirmed.appointment', Appointments, {
+	date: () => faker.date.past(15),
+	observations: () => faker.lorem.text(),
+	patientId: () => (new Mongo.Collection.ObjectID)._str,
+	isConfirmed: () => true,
+	isCanceled: () => false,
+	createdAt: () => new Date(),
+	createdBy: () => (new Mongo.Collection.ObjectID)._str, 
+});
+Factory.define('canceled.appointment', Appointments, {
+	date: () => faker.date.past(15),
+	observations: () => faker.lorem.text(),
+	patientId: () => (new Mongo.Collection.ObjectID)._str,
+	isConfirmed: () => false,
+	isCanceled: () => true,
+	createdAt: () => new Date(),
+	createdBy: () => (new Mongo.Collection.ObjectID)._str, 
 });
 
 export default Appointments;
