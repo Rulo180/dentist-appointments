@@ -42,6 +42,8 @@ describe('Utils', function() {
 		});
 	});
 
+	// Map Entities To Options functions
+
 	describe('MapPatientsToOptions', function() {
 		const patientsMock = [{
 			_id: '123',
@@ -81,11 +83,16 @@ describe('Utils', function() {
 			assert.deepEqual(result[0], { value: '111', label: 'OSEP' });
 		});
 
-		it('mapAppointmentToForm Should return an empty object if arguments are not valid', function() {
+	});
+
+	// Map Entities To Form functions
+
+	describe('MapAppointmentToForm', function() {
+		it('should return an empty object if arguments are not valid', function() {
 			let result = mapAppointmentToForm();
 			assert.isObject(result, 'On no arguments returns an empty object');
 		});
-		it('mapAppointmentToForm Should return same patientId and date formatted', function() {
+		it('should return same patientId and date formatted', function() {
 			const now = new Date();
 			const appointment = {
 				patientId: '123456',
@@ -121,7 +128,7 @@ describe('Utils', function() {
 			};
 			assert.deepEqual(result, expected);
 		});
-		it('mapAppointmentToForm Should return empty string on observation if there is no value', function() {
+		it('should return empty string on observation if there is no value', function() {
 			const now = new Date();
 			const appointment = {
 				patientId: '123456',
@@ -144,7 +151,8 @@ describe('Utils', function() {
 		const patientMock = {
 			name: 'Jon Snow',
 			tel: '4222555',
-			birthDate: now
+			birthDate: now,
+			socialSecureId: '1111'
 		};
 		
 		it('Should return an empty object if arguments are not valid', function() {
@@ -161,17 +169,21 @@ describe('Utils', function() {
 
 			assert.deepEqual(result, {
 				name: {
-					value: 'Jon Snow',
+					value: patientMock.name,
 					valid: true,
 				},
 				tel: {
-					value: '4222555',
+					value: patientMock.tel,
 					valid: true,
 				},
 				birthDate: {
 					value: expectedDate,
 					valid: true,
 				},
+				socialSecureId: {
+					value: patientMock.socialSecureId,
+					valid: true,
+				}
 			});
 		});
 	});

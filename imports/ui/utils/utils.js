@@ -82,6 +82,10 @@ export const mapPatientToForm = (patient) => {
 			value: moment(patient.birthDate).format('YYYY-MM-DD').toString(),
 			valid: true,
 		},
+		socialSecureId: {
+			value: patient.socialSecureId,
+			valid: true,
+		}
 	});
 };
 
