@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
 import Select from 'react-select';
+import { isEmpty } from 'lodash'
 
 import { URLS } from '../constants';
 
@@ -68,6 +69,7 @@ const PatientForm = ({ formData, socialsOptions, onChange, onSelect, onSubmit, t
 									name="socialsSelect"
 									options={socialsOptions}
 									onChange={onSelect}
+									value={(formData.socialSecureId)?socialsOptions.filter((option) => option.value === formData.socialSecureId.value):''}
 								/>
 							</div>
 							<div className="row align-items-center">

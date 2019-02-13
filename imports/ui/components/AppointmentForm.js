@@ -8,9 +8,7 @@ import { URLS } from '../constants';
 import { mapPatientsToOptions } from '../utils/utils';
 
 
-const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) => {
-
-	const options = mapPatientsToOptions(patients);
+const AppointmentForm = ({ patientsOptions, formData, onChange, onSelect, onSubmit }) => {
 
 	return (
 		<div className="row justify-content-center">
@@ -31,8 +29,9 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 								</div>
 								<Select
 									name="patientSelect"
-									options={options}
+									options={patientsOptions}
 									onChange={onSelect}
+									value={(formData.patientId)?patientsOptions.filter((option) => option.value === formData.patientId.value):''}
 								/>
 							</div>
 							<div className="form-row">
@@ -105,7 +104,7 @@ const AppointmentForm = ({ patients, formData, onChange, onSelect, onSubmit }) =
 };
 
 AppointmentForm.propTypes = {
-	patients: PropTypes.array.isRequired,
+	patientsOptions: PropTypes.array.isRequired,
 	formData: PropTypes.shape({
 		patientId: PropTypes.object,
 		time: PropTypes.object,

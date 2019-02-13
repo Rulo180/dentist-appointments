@@ -3,7 +3,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 
 import { URLS } from '../constants';
 import Patients from '../../api/patients';
-import { convertTimeToMilliseconds, mapAppointmentToForm } from '../utils/utils';
+import { convertTimeToMilliseconds, mapAppointmentToForm, mapPatientsToOptions } from '../utils/utils';
 
 import AppointmentForm from '../components/AppointmentForm';
 
@@ -109,7 +109,7 @@ class AppointmentEditContainer extends PureComponent {
 		return (
 			<AppointmentForm 
 				formData={formData}
-				patients={patients}
+				patientsOptions={mapPatientsToOptions(patients)}
 				onChange={this._handleChange}
 				onSelect={this._handleSelect}
 				onSubmit={this._handleSubmit}
