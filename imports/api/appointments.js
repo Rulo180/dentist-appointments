@@ -46,7 +46,7 @@ Appointments.attachSchema(Appointments.schema);
 
 Meteor.methods({
 	'appointments.list'() {
-		return Appointments.find({}).fetch;
+		return Appointments.find({}).fetch();
 	},
 	'appointment.find'({
 		_id,
@@ -140,6 +140,47 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		}
 		Appointments.remove({ _id });
+	},
+	'appointment.filter'({
+		dateRange,
+	}) {
+		//check(_id, String);
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized');
+		}
+
+		let query = {};
+		let start = new Date();
+		let end = new Date();
+		switch(dateRange) {
+			case 'today':
+				start.setHours(0,0,0,0);
+				end.setHours(23,59,59,999);
+			break;
+			case 'tomorrow':
+				start.setHours(0,0,0,0);
+				start.setDate(start.getDate() + 1);
+				end.setHours(23,59,59,999);
+				end.setDate(end.getDate() + 1);
+			break;
+			case 'nextweek':
+				let daysToNextWeek = 7 - start.getDay(); //monday -> 7, sunday -> 1
+				daysToNextWeek++; //add one because 0 is sunday for javascript
+				start.setDate(start.getDate() + daysToNextWeek);
+				start.setHours(0,0,0,0);
+				end.setDate(start.getDate() + 7);	
+				end.setHours(23,59,59,999);	
+			break;
+		}
+
+		query.date = {
+			$gte: start, 
+			$lte: end
+		};
+
+		console.log("query", query);
+
+		return Appointments.find(query).fetch();
 	},
 });
 
