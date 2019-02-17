@@ -1,13 +1,46 @@
-export const URLS = {
-	HOME: '/',
-	LOGIN: '/login',
-	PATIENTS: '/patients',
-	ADD_PATIENT: '/patients/add',
-	EDIT_PATIENT: '/patient/edit',
-	APPOINTMENTS: '/appointments',
-	CREATE_APPOINTMENT: '/appointment/add',
-	EDIT_APPOINTMENT: '/appointment/edit',
-	SOCIALS: '/socials',
-	CREATE_SOCIALS: '/socials/add',
-	EDIT_SOCIALS: '/socials/edit',
+export const routes = {
+	Home: {
+		path:'/',
+		label: 'Home',
+	},
+	Login: {
+		path: '/login',
+		label: 'Login',
+	},
+	Patients: {
+		path: '/patients',
+		label: 'Patients',
+	},
+	AddPatient: {
+		path: '/patients/add',
+		label: 'Add',
+	},
+	EditPatient: {
+		path: '/patients/edit',
+		label: 'Edit',
+	},
+	Appointments: {
+		path: '/appointments',
+		label: 'Appointments',
+	},
+	AddAppointment: {
+		path: '/appointments/add',
+		label: 'Add'
+	},
+	EditAppointment: {
+		path: '/appointments/edit',
+		label: 'Edit',
+	},
+	Socials: {
+		path: '/socials',
+		label: 'Social Secures',
+	},
+	AddSocial: {
+		path: '/socials/add',
+		label: 'Add'
+	},
+	EditSocial: {
+		path: '/socials/edit',
+		label: 'Edit',
+	},
 };

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 
-import { URLS } from './constants';
+import { routes } from './constants';
 
 
 class Signup extends PureComponent {
@@ -32,7 +32,7 @@ class Signup extends PureComponent {
 				email,
 				password,
 			});
-			this.props.history.push(URLS.HOME);
+			this.props.history.push(routes.Home.path);
 		} else {
 			this.setState({ hasError: true });
 		}

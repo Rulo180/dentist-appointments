@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { translate, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const SocialSecureTable = ({ socialSecure }) => {
@@ -27,7 +27,7 @@ const SocialSecureTable = ({ socialSecure }) => {
 							<h3>
 								{socialSecure.code} - {socialSecure.name}
 							</h3>
-							<Link to={URLS.CREATE_SOCIALS} className="btn btn-primary">
+							<Link to={routes.AddSocial.path} className="btn btn-primary">
 								<i className="fas fa-plus"></i>&nbsp;
 								<Trans i18nKey="table.actions.add">
 									Add Services

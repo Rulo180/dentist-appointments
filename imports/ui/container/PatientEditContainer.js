@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import SocialSecures from '../../api/socialSecures';
 import { mapSocialSecuresToOptions, mapPatientToForm } from '../utils/utils';
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 import PatientForm from '../components/PatientForm';
 
@@ -88,7 +88,7 @@ class PatientEditContainer extends PureComponent {
 				socialSecureId: socialSecureId.value,
 			}
 		}, () => {
-			this.props.history.push(URLS.PATIENTS);
+			this.props.history.push(routes.Patients.path);
 		});
 	}
 		

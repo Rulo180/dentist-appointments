@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 import SocialSecureForm from '../components/SocialSecureForm';
 
 class SocialSecureCreateContainer extends PureComponent {
@@ -87,7 +87,7 @@ class SocialSecureCreateContainer extends PureComponent {
 			if (error) {
 				console.error(error);
 			}
-			this.props.history.push(URLS.SOCIALS);
+			this.props.history.push(routes.Socials.path);
 		});
 	}
 

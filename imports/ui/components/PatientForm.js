@@ -5,7 +5,7 @@ import { translate, Trans } from 'react-i18next';
 import Select from 'react-select';
 import { isEmpty } from 'lodash'
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const PatientForm = ({ formData, socialsOptions, onChange, onSelect, onSubmit, t }) => {
@@ -59,7 +59,7 @@ const PatientForm = ({ formData, socialsOptions, onChange, onSelect, onSubmit, t
 									<label htmlFor="socialsSelect">
 										<Trans i18nKey={'form.fields.social.label'}>Social Secure</Trans>
 									</label>
-									<Link to={URLS.CREATE_SOCIALS}>
+									<Link to={routes.AddSocial.path}>
 										<Trans i18nKey={''}>
 											Create social secure
 										</Trans>
@@ -79,7 +79,7 @@ const PatientForm = ({ formData, socialsOptions, onChange, onSelect, onSubmit, t
 									</button>
 								</div>
 								<div className="col">
-									<Link to={URLS.PATIENTS}>
+									<Link to={routes.Patients.path}>
 										<Trans i18nKey={'form.actions.cancel'}>Cancel</Trans>
 									</Link>
 								</div>

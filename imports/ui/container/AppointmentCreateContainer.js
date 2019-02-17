@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 import { convertTimeToMilliseconds, mapPatientsToOptions } from '../utils/utils';
 
 import Patients from '../../api/patients';
@@ -78,7 +78,7 @@ class AppointmentCreateContainer extends PureComponent {
 			if (error) {
 				console.error(error);
 			}
-			this.props.history.push(URLS.APPOINTMENTS);
+			this.props.history.push(routes.APPOINTMENTS);
 		});
 	};
 

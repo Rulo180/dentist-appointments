@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const SocialSecuresTable = ({ socialSecures, onDelete }) => {
@@ -11,10 +11,10 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 		const { _id, name, code } = social;
 		return (
 			<tr key={_id}>
-				<td><Link to={`${URLS.EDIT_SOCIALS}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
+				<td><Link to={`${routes.EditSocial.path}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td scope="row">{code}</td>
 				<td scope="row">
-					<Link to ={`${URLS.SOCIALS}/${_id}`}>
+					<Link to ={`${routes.Socials.path}/${_id}`}>
 						{name}
 					</Link>
 				</td>
@@ -34,7 +34,7 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 									Social Secures
 								</Trans>
 							</h3>
-							<Link to={URLS.CREATE_SOCIALS} className="btn btn-primary">
+							<Link to={routes.AddSocial.path} className="btn btn-primary">
 								<i className="far fa-calendar-plus"></i>&nbsp;
 								<Trans i18nKey={'table.actions.add'}>
 									Add

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { translate, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const SocialSecureForm = ({ formData, onChange, onSubmit, onAdd, onRemove, t }) => {
@@ -116,7 +116,7 @@ const SocialSecureForm = ({ formData, onChange, onSubmit, onAdd, onRemove, t }) 
 									</button>
 								</div>
 								<div className="col">
-									<Link to={URLS.SOCIALS}>
+									<Link to={routes.Socials.path}>
 										<Trans i18nKey={'form.actions.cancel'}>
 											Cancel
 										</Trans>
