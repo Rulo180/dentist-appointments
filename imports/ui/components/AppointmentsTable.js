@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { translate, Trans } from 'react-i18next';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDelete }) => {
@@ -28,10 +28,10 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 		return (
 			<tr key={_id} className={isCanceled?'table-dark':''}>
 				<td className="text-center" scope="row">{confirmBtn}</td>
-				<td scope="row"><Link to={`${URLS.EDIT_APPOINTMENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td>{moment(date).utc().format('HH:mm')} hs</td>
 				<td>{name}</td>
 				<td>{observations}</td>
+				<td><Link to={`${routes.EditAppointment.path}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td className="text-center">{cancelBtn}</td>
 				<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 			</tr>
@@ -49,9 +49,9 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 									Appointments
 								</Trans>
 							</h3>
-							<Link to={URLS.CREATE_APPOINTMENT} className="btn btn-primary">
+							<Link to={routes.AddAppointment.path} className="btn btn-primary">
 								<i className="far fa-calendar-plus"></i>&nbsp;
-								<Trans i18nKey={'appointments.add'}>
+								<Trans i18nKey={'tables.actions.add'}>
 									Add
 								</Trans>
 							</Link>
@@ -60,13 +60,8 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 							<thead>
 								<tr>
 									<th scope="col">
-										<Trans i18nKey={'appointments.table.confirm'}>
+										<Trans i18nKey={'tables.actions.confirm'}>
 											Confirm
-										</Trans>
-									</th>
-									<th scope="col">
-										<Trans i18nKey={'appointments.table.edit'}>
-											Edit
 										</Trans>
 									</th>
 									<th scope="col">
@@ -84,12 +79,21 @@ const AppointmentsTable = ({ appointments, patients, onConfirm, onCancel, onDele
 											Observations
 										</Trans>
 									</th>
+									<th scope="col">
+										<Trans i18nKey={'tables.actions.edit'}>
+											Edit
+										</Trans>
+									</th>
 									<th className="text-center" scope="col">
-										<Trans i18nKey={'appointments.table.cancel'}>
+										<Trans i18nKey={'tables.actions.cancel'}>
 											Is Canceled?
 										</Trans>
 									</th>
-									<th scope="col"></th>
+									<th scope="col">
+										<Trans i18nKey={'tables.actions.delete'}>
+											Delete
+										</Trans>
+									</th>
 								</tr>
 							</thead>
 							<tbody>

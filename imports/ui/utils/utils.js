@@ -2,6 +2,7 @@ import { check } from 'meteor/check';
 import moment from 'moment';
 import { isEmpty } from 'lodash';
 
+
 const MILLISECONDS_IN_HOUR = 3600000;
 const MILLISECONDS_IN_MINUTE = 60000;
 
@@ -106,4 +107,12 @@ export const mapSocialSecureToForm = (socialSecure) => {
 		},
 		services:  socialSecure.services,
 	});
+};
+
+export const getUrlLabel = (path, routes) => {
+	const keys = Object.keys(routes);
+	const routeArray = keys.filter( key => {
+		return routes[key].path === path;
+	});
+	return routeArray.length != 0 ? routes[routeArray[0]].label : '';
 };

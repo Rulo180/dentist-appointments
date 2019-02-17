@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 import { mapPatientsToOptions } from '../utils/utils';
 
 
@@ -21,7 +21,7 @@ const AppointmentForm = ({ patientsOptions, formData, onChange, onSelect, onSubm
 									<label htmlFor="patientSelect">
 										<Trans i18nKey={'appointments.form.labels.patient'}>Patient</Trans>
 									</label>
-									<Link to={URLS.ADD_PATIENT}>
+									<Link to={routes.AddPatient.path}>
 										<Trans i18nKey={'appointments.form.title'}>
 											Create patient
 										</Trans>
@@ -88,7 +88,7 @@ const AppointmentForm = ({ patientsOptions, formData, onChange, onSelect, onSubm
 									</button>
 								</div>
 								<div className="col">
-									<Link to={URLS.APPOINTMENTS}>
+									<Link to={routes.Appointments.path}>
 										<Trans i18nKey={'form.actions.cancel'}>
 											Cancel
 										</Trans>

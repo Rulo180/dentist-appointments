@@ -35,8 +35,8 @@ const AppRouter = () => (
 				<PrivateRoute path="/patient/edit/:id" component={PatientEditContainer} />
 				<PrivateRoute path="/patients/add" component={CreatePatientContainer} />
 				<PrivateRoute exact path="/patients" component={PatientsListContainer} />
-				<PrivateRoute path="/appointment/edit/:id" component={AppointmentEditContainer}/>
-				<PrivateRoute path="/appointment/add" component={AppointmentCreateContainer}/>
+				<PrivateRoute path="/appointments/edit/:id" component={AppointmentEditContainer}/>
+				<PrivateRoute path="/appointments/add" component={AppointmentCreateContainer}/>
 				<PrivateRoute exact path="/appointments" component={AppointmentsListContainer}/>
 				<PrivateRoute path="/socials/edit/:id" component={SocialSecureEditContainer} />
 				<PrivateRoute path="/socials/add" component={SocialSecureCreateContainer} />

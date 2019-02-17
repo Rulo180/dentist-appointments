@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { translate, Trans } from 'react-i18next';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 
 const PatientsTable = ({ patients, socialSecures, onDelete }) => {
@@ -16,7 +16,7 @@ const PatientsTable = ({ patients, socialSecures, onDelete }) => {
 				<td>{socialSecures.filter((social) => social._id === patient.socialSecureId)[0].name}</td>
 				<td>{tel}</td>
 				<td>{moment(birthDate).format('DD-MM-YYYY').toString()}</td>
-				<td><Link to={`${URLS.EDIT_PATIENT}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
+				<td><Link to={`${routes.EditPatient.path}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 			</tr>
 		);
@@ -24,7 +24,7 @@ const PatientsTable = ({ patients, socialSecures, onDelete }) => {
 
 	return (
 		<div className="row justify-content-center">
-			<div className="col-lg-10">
+			<div className="col-md-10">
 				<div className="card">
 					<div className="card-body">
 						<div className="row no-gutters justify-content-between mb-3">
@@ -33,7 +33,7 @@ const PatientsTable = ({ patients, socialSecures, onDelete }) => {
 									Patients
 								</Trans>
 							</h3>
-							<Link to={URLS.ADD_PATIENT} className="btn btn-primary">
+							<Link to={routes.AddPatient.path} className="btn btn-primary">
 								<i className="fas fa-user-plus"></i>&nbsp;
 								<Trans i18nKey="table.add">
 									Add

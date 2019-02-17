@@ -105,7 +105,7 @@ class SocialSecureEditContainer extends PureComponent {
 			if (error) {
 				console.error(error);
 			}
-			this.props.history.push(URLS.SOCIALS);
+			this.props.history.push(URLS.Socials.path);
 		});
 	}
 

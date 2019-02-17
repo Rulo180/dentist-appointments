@@ -6,7 +6,8 @@ import {
 	mapAppointmentToForm,
 	mapSocialSecuresToOptions,
 	mapPatientToForm,
-	mapSocialSecureToForm
+	mapSocialSecureToForm,
+	getUrlLabel,
 } from './utils';
 
 
@@ -212,6 +213,52 @@ describe('Utils', function() {
 				},
 				services: []
 			});
+		});
+	});
+
+	describe('getUrlLabel', function() {
+		const routes = {
+			Home: {
+				path: '/',
+				label: 'Home',
+			},
+			SomeRoute: {
+				path: '/someroute',
+				label: 'Some route',
+			},
+			AnotherRoute: {
+				path: '/anotherroute',
+				label: 'Another route',
+			},
+			SameRoute: {
+				path: '/anotherroute',
+				label: 'Same route',
+			}
+		};
+		
+		it('should returns a string', function() {
+			const result = getUrlLabel('/someroute', routes);
+			assert.isString(result);
+		});
+
+		it('should return label if the path matches', function() {
+			const result = getUrlLabel('/someroute', routes);
+			assert.equal(result, 'Some route');
+		});
+
+		it('should return an empty string if the path doesnt match', function () {
+			const result = getUrlLabel('/inexistentRoute', routes);
+			assert.isEmpty(result);
+		});
+
+		it('should return just the first ocurrence if two path matches', function() {
+			const result = getUrlLabel('/anotherroute', routes);
+			assert.equal(result, 'Another route');
+			assert.isNotArray(result);
+		});
+
+		it('should fail if routes parameter is missing', function() {
+			assert.throws(() => getUrlLabel('/someroute'), 'Cannot convert undefined or null to object');
 		});
 	});
 });

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 
 import SocialSecureTable from '../components/SocialSecureTable';
 

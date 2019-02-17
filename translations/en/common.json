@@ -11,9 +11,6 @@
 			"title": "New patient"
 		},
 		"table": {
-			"cancel": "Cancel",
-			"confirm": "Confirm",
-			"edit": "Edit",
 			"observations": "Observations",
 			"patient": "Patient",
 			"time": "Time",
@@ -48,5 +45,14 @@
 		"logout": "Logout",
 		"patients": "Patients",
 		"socials": "Social Secures"
+	},
+	"tables": {
+		"actions": {
+			"add": "Add",
+			"cancel": "Cancel",
+			"confirm": "Confirm",
+			"delete": "Delete",
+			"edit": "Edit"
+		}
 	}
 }

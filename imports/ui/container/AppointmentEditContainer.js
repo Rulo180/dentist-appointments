@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 
-import { URLS } from '../constants';
+import { routes } from '../constants';
 import Patients from '../../api/patients';
 import { convertTimeToMilliseconds, mapAppointmentToForm, mapPatientsToOptions } from '../utils/utils';
 
@@ -88,7 +88,7 @@ class AppointmentEditContainer extends PureComponent {
 				patientId: patientId.value,
 			}
 		}, () => {
-			this.props.history.push(URLS.APPOINTMENTS);
+			this.props.history.push(routes.APPOINTMENTS);
 		});
 	}
 
