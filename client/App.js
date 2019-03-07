@@ -32,7 +32,7 @@ const AppRouter = () => (
 				<Route path="/login" component={Login} />
 				<Route path="/signup" component={Signup} />
 				<PrivateRoute exact path="/" component={Index} />
-				<PrivateRoute path="/patient/edit/:id" component={PatientEditContainer} />
+				<PrivateRoute path="/patients/edit/:id" component={PatientEditContainer} />
 				<PrivateRoute path="/patients/add" component={CreatePatientContainer} />
 				<PrivateRoute exact path="/patients" component={PatientsListContainer} />
 				<PrivateRoute path="/appointments/edit/:id" component={AppointmentEditContainer}/>

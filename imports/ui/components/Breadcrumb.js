@@ -5,7 +5,7 @@ import {  Route } from 'react-router-dom';
 import BreadcrumbItem from './BreadcrumbItem';
 
 
-const Breadcrumb = ({ location : { pathname }, match, ...rest }) => {
+const Breadcrumb = ({ location : { pathname }, match }) => {
 	const paths = [];
 	pathname.split('/').reduce((prev, curr, index) => {
 		paths[index] = `${prev}/${curr}`;
@@ -20,7 +20,7 @@ const Breadcrumb = ({ location : { pathname }, match, ...rest }) => {
 };
 
 Breadcrumb.propTypes = {
-
+	
 };
 
 export default Breadcrumb;

@@ -14,7 +14,7 @@ const Layout = ({ children, history, match, location }) => {
 			<main className="layout__content container pt-3 pb-3">
 				<div className="row justify-content-center">
 					<div className="col-md-10">
-						<Breadcrumb history={history} match= {match} location={location} />
+						<Breadcrumb match= {match} location={location} />
 					</div>
 				</div>
 				{children}

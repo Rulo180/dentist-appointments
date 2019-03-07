@@ -9,16 +9,16 @@ import AppointmentsTable from '../components/AppointmentsTable';
 
 
 const AppointmentsList = ({ appointments, patients, isLoading }) => {
-	const _handleDelete = (id) => {
-		Meteor.call('appointment.remove', { _id: id});
+	const _handleDelete = (appointmentId) => {
+		Meteor.call('appointment.remove', { _id: appointmentId});
 	};
 
-	const _handleConfirm = (id) => {
-		Meteor.call('appointment.confirm', { _id: id });
+	const _handleConfirm = (appointmentId) => {
+		Meteor.call('appointment.confirm', { _id: appointmentId });
 	};
 
-	const _handleCancel = (id) => {
-		Meteor.call('appointment.cancel', { _id: id});
+	const _handleCancel = (appointmentId) => {
+		Meteor.call('appointment.cancel', { _id: appointmentId});
 	};
 	
 	if(isLoading) {

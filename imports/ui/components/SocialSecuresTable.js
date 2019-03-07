@@ -11,13 +11,13 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 		const { _id, name, code } = social;
 		return (
 			<tr key={_id}>
-				<td><Link to={`${routes.EditSocial.path}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td scope="row">{code}</td>
 				<td scope="row">
 					<Link to ={`${routes.Socials.path}/${_id}`}>
 						{name}
 					</Link>
 				</td>
+				<td><Link to={`${routes.EditSocial.path}/${_id}`} className="btn btn-outline-secondary"><i className="fas fa-edit"></i></Link></td>
 				<td className="text-center"><button onClick={() => onDelete(_id)} type="button" className="btn btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
 			</tr>
 		);
@@ -45,11 +45,6 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 							<thead>
 								<tr>
 									<th scope="col">
-										<Trans i18nKey="table.actions.edit">
-											Edit
-										</Trans>
-									</th>
-									<th scope="col">
 										<Trans i18nKey={'table.cols.code'}>
 											Code
 										</Trans>
@@ -57,6 +52,11 @@ const SocialSecuresTable = ({ socialSecures, onDelete }) => {
 									<th scope="col">
 										<Trans i18nKey={'table.cols.name'}>
 											Name
+										</Trans>
+									</th>
+									<th scope="col">
+										<Trans i18nKey="table.actions.edit">
+											Edit
 										</Trans>
 									</th>
 									<th className="text-center">
