@@ -6,33 +6,28 @@ import Patients from '../../api/patients';
 import SocialSecures from '../../api/socialSecures';
 
 import PatientsTable from '../components/PatientsTable';
-import DeleteModal from '../components/DeleteModal';
+import withModal from '../hoc/withModal';
 
 class PatientsListContainer extends PureComponent {
-	constructor(props) {
-		super(props);
-		this.state = {
-			showConfirmationModal: false,
-			modalPatientId: null,
-		};
+
+	onPrimaryAction = (patientId) => {
+		Meteor.call('patient.remove', { _id: patientId  });
 	}
 
-	_handleDelete = () => {
-		Meteor.call('patient.remove', { _id: this.state.modalPatientId });
-		this._closeConfirmationModal();
+	_handleDelete = (patientId) => {
+		const { openModal, closeModal, patients } = this.props;
+
+		openModal({
+			patientId,
+			title: 'Delete confirmation',
+			content: `You are going to delete ${patients.find(patient=>patient._id === patientId).name}. Are you sure?`,
+			onPrimary: () => this.onPrimaryAction(patientId),
+			onSecondary: closeModal,
+		});
 	};
-
-	_showConfirmationModal = (id) => {
-		this.setState({ showConfirmationModal: true, modalPatientId: id });
-	}
-
-	_closeConfirmationModal = () => {
-		this.setState({ showConfirmationModal: false, modalPatientId: null });
-	}
 
 	render() { 
 		const { patients, socialSecures,isLoading } = this.props;
-		const { showConfirmationModal, modalPatientId } = this.state;
 
 		if(isLoading) {
 			return (
@@ -45,21 +40,12 @@ class PatientsListContainer extends PureComponent {
 		}
 
 		return (
-			<section>
-				<PatientsTable patients={patients} socialSecures={socialSecures} onDelete={this._showConfirmationModal} />
-				<DeleteModal 
-					isOpen={showConfirmationModal}
-					title="Delete confirmation"
-					object={(modalPatientId)?patients.filter((patient) => patient._id === modalPatientId)[0].name:''}
-					onConfirm={this._handleDelete}
-					onClose={this._closeConfirmationModal}
-				/>
-			</section>
+			<PatientsTable patients={patients} socialSecures={socialSecures} onDelete={this._handleDelete} />
 		);
 	}
 }
  
-export default withTracker(() => {
+export default withModal(withTracker(() => {
 	const patientsHandler = Meteor.subscribe('patients');
 	const isLoadingPatients = !patientsHandler.ready();
 	const socialsHandler = Meteor.subscribe('socialSecures');
@@ -70,4 +56,4 @@ export default withTracker(() => {
 		socialSecures: !isLoadingSocials ? SocialSecures.find({}).fetch() : [], 
 		isLoading: isLoadingPatients || isLoadingSocials ,
 	};
-})(PatientsListContainer);
+})(PatientsListContainer));
